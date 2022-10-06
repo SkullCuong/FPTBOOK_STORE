@@ -1,3 +1,19 @@
-﻿@{
+﻿@* @{
     Layout = "_MainLayout";
-}
+} *@
+@{  
+    string CurrentName = Convert.ToString(Context.Request.HttpContext.Request.RouteValues["Controller"]);   
+    switch (CurrentName)  
+    {  
+        
+        case "Admin":  
+            Layout = "_Layout";  
+            break;  
+        default:  
+            
+            Layout = "_MainLayout";  
+            break;  
+    } 
+    
+} 
+

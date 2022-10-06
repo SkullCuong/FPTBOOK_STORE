@@ -8,41 +8,49 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FPTBOOK_STORE
 build_property.RootNamespace = FPTBOOK_STORE
-build_property.ProjectDir = d:\DATA\SCHOOL\1670\asm2code\FPTBOOK_STORE\
+build_property.ProjectDir = E:\Codes\FPTBOOK_STORE\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = d:\DATA\SCHOOL\1670\asm2code\FPTBOOK_STORE
+build_property.MSBuildProjectDirectory = E:\Codes\FPTBOOK_STORE
 build_property._RazorSourceGeneratorDebug = 
 
-[d:/DATA/SCHOOL/1670/asm2code/FPTBOOK_STORE/Views/Home/Index.cshtml]
+[E:/Codes/FPTBOOK_STORE/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Codes/FPTBOOK_STORE/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/DATA/SCHOOL/1670/asm2code/FPTBOOK_STORE/Views/Home/Privacy.cshtml]
+[E:/Codes/FPTBOOK_STORE/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/DATA/SCHOOL/1670/asm2code/FPTBOOK_STORE/Views/Shared/Error.cshtml]
+[E:/Codes/FPTBOOK_STORE/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/DATA/SCHOOL/1670/asm2code/FPTBOOK_STORE/Views/Shared/_MainLayout.cshtml]
+[E:/Codes/FPTBOOK_STORE/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Codes/FPTBOOK_STORE/Views/Shared/_MainLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NYWluTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/DATA/SCHOOL/1670/asm2code/FPTBOOK_STORE/Views/Shared/_ValidationScriptsPartial.cshtml]
+[E:/Codes/FPTBOOK_STORE/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/DATA/SCHOOL/1670/asm2code/FPTBOOK_STORE/Views/_ViewImports.cshtml]
+[E:/Codes/FPTBOOK_STORE/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/DATA/SCHOOL/1670/asm2code/FPTBOOK_STORE/Views/_ViewStart.cshtml]
+[E:/Codes/FPTBOOK_STORE/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/DATA/SCHOOL/1670/asm2code/FPTBOOK_STORE/Views/Shared/_Layout.cshtml]
+[E:/Codes/FPTBOOK_STORE/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-dkzkfwm7qo
