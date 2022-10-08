@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "g0F5yUE2HHBFVX0mhg6avDn7+/dxMI3MsoDN7mWcCis=",
+  "Hash": "p58cNudVXBf6rH/unBXUk+EdcrNFKotjV8+NvDbPsSE=",
   "Source": "FPTBOOK_STORE",
   "BasePath": "_content/FPTBOOK_STORE",
   "Mode": "Default",
@@ -2242,6 +2242,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\uploads\\67e679e61899cf6309fa640ead98ffc4.jpg",
+      "SourceId": "FPTBOOK_STORE",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\",
+      "BasePath": "_content/FPTBOOK_STORE",
+      "RelativePath": "uploads/67e679e61899cf6309fa640ead98ffc4.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\67e679e61899cf6309fa640ead98ffc4.jpg"
     },
     {
       "Identity": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\webfonts\\fa-brands-400.eot",

@@ -67,9 +67,9 @@ namespace FPTBOOK_STORE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Price,UploadImage,AuthorID,CategoryID,PublisherID")] Book book, IFormFile myfile)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                    string filename = Path.GetFileName(myfile.FileName);
+                string filename = Path.GetFileName(myfile.FileName);
                 var filePath = Path.Combine(hostEnvironment.WebRootPath, "uploads");
                 string fullPath = filePath + "\\" + filename;
                 using (var stream = new FileStream(fullPath, FileMode.Create))
