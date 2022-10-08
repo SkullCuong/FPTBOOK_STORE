@@ -12,7 +12,7 @@ namespace FPTBOOK_STORE.Controllers
     public class AuthorController : Controller
     {
         private readonly MvcContext _context;
-
+        private string Layout ="StoreownerLayout"; 
         public AuthorController(MvcContext context)
         {
             _context = context;
@@ -47,6 +47,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: Author/Create
         public IActionResult Create()
         {
+            ViewBag.Layout = Layout;
             return View();
         }
 

@@ -1,7 +1,10 @@
-﻿@* @{
-    Layout = "_MainLayout";
-} *@
-@{  
+﻿@{
+    Layout = ViewBag.Layout;
+    if(Layout == null){
+        Layout = "_MainLayout"; 
+    }
+}
+@* @{  
     string CurrentName = Convert.ToString(Context.Request.HttpContext.Request.RouteValues["Controller"]);   
     switch (CurrentName)  
     {  
@@ -15,5 +18,5 @@
             break;  
     } 
     
-} 
+}  *@
 
