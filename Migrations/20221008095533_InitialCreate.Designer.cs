@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FPTBOOK_STORE.Migrations
 {
     [DbContext(typeof(MvcContext))]
-    [Migration("20221008034159_InitialCreate")]
+    [Migration("20221008095533_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

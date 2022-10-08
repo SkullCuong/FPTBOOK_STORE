@@ -1,9 +1,11 @@
 namespace FPTBOOK_STORE.Models;
-
+using System.ComponentModel.DataAnnotations;
 public class Book{
     public int Id { get; set; }
     public string? Name { get; set; }
     public double Price { get; set; }
+
+    [DataType(DataType.ImageUrl)]
     public string? UploadImage { get; set; }
     public int AuthorID { get; set; }
     public Author? Author { get; set; }

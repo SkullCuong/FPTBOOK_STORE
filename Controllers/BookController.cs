@@ -6,17 +6,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FPTBOOK_STORE.Models;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace FPTBOOK_STORE.Controllers
 {
     public class BookController : Controller
     {
         private readonly MvcContext _context;
+        private readonly IWebHostEnvironment hostEnvironment;
 
-        public BookController(MvcContext context)
+        public BookController(MvcContext context, IWebHostEnvironment environment)
         {
             _context = context;
+
+            hostEnvironment = environment;
         }
+        
 
         // GET: Book
         public async Task<IActionResult> Index()
@@ -60,10 +65,18 @@ namespace FPTBOOK_STORE.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Price,UploadImage,AuthorID,CategoryID,PublisherID")] Book book)
+        public async Task<IActionResult> Create([Bind("Id,Name,Price,UploadImage,AuthorID,CategoryID,PublisherID")] Book book, IFormFile myfile)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
+                    string filename = Path.GetFileName(myfile.FileName);
+                var filePath = Path.Combine(hostEnvironment.WebRootPath, "uploads");
+                string fullPath = filePath + "\\" + filename;
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    await myfile.CopyToAsync(stream);
+                }
+                book.UploadImage = filename;
                 _context.Add(book);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
