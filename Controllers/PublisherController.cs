@@ -12,7 +12,7 @@ namespace FPTBOOK_STORE.Controllers
     public class PublisherController : Controller
     {
         private readonly MvcContext _context;
-
+        private string Layout = "StoreownerLayout";
         public PublisherController(MvcContext context)
         {
             _context = context;
@@ -21,14 +21,16 @@ namespace FPTBOOK_STORE.Controllers
         // GET: Publisher
         public async Task<IActionResult> Index()
         {
-              return _context.Publisher != null ? 
-                          View(await _context.Publisher.ToListAsync()) :
-                          Problem("Entity set 'MvcContext.Publisher'  is null.");
+            ViewBag.Layout = Layout;
+            return _context.Publisher != null ?
+                        View(await _context.Publisher.ToListAsync()) :
+                        Problem("Entity set 'MvcContext.Publisher'  is null.");
         }
 
         // GET: Publisher/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewBag.Layout = Layout;
             if (id == null || _context.Publisher == null)
             {
                 return NotFound();
@@ -47,6 +49,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: Publisher/Create
         public IActionResult Create()
         {
+            ViewBag.Layout = Layout;
             return View();
         }
 
@@ -57,6 +60,7 @@ namespace FPTBOOK_STORE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name")] Publisher publisher)
         {
+            ViewBag.Layout = Layout;
             if (ModelState.IsValid)
             {
                 _context.Add(publisher);
@@ -69,6 +73,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: Publisher/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.Layout = Layout;
             if (id == null || _context.Publisher == null)
             {
                 return NotFound();
@@ -89,6 +94,7 @@ namespace FPTBOOK_STORE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Publisher publisher)
         {
+            ViewBag.Layout = Layout;
             if (id != publisher.Id)
             {
                 return NotFound();
@@ -120,6 +126,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: Publisher/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewBag.Layout = Layout;
             if (id == null || _context.Publisher == null)
             {
                 return NotFound();
@@ -140,6 +147,7 @@ namespace FPTBOOK_STORE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            ViewBag.Layout = Layout;
             if (_context.Publisher == null)
             {
                 return Problem("Entity set 'MvcContext.Publisher'  is null.");
@@ -149,14 +157,15 @@ namespace FPTBOOK_STORE.Controllers
             {
                 _context.Publisher.Remove(publisher);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PublisherExists(int id)
         {
-          return (_context.Publisher?.Any(e => e.Id == id)).GetValueOrDefault();
+            ViewBag.Layout = Layout;
+            return (_context.Publisher?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

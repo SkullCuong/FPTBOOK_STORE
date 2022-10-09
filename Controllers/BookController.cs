@@ -54,9 +54,9 @@ namespace FPTBOOK_STORE.Controllers
         // GET: Book/Create
         public IActionResult Create()
         {
-            ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Id");
-            ViewData["CategoryID"] = new SelectList(_context.Category, "Id", "Id");
-            ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Id");
+            ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name");
+            ViewData["CategoryID"] = new SelectList(_context.Category, "Id", "Name");
+            ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name");
             return View();
         }
 
@@ -81,9 +81,9 @@ namespace FPTBOOK_STORE.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Id", book.AuthorID);
-            ViewData["CategoryID"] = new SelectList(_context.Category, "Id", "Id", book.CategoryID);
-            ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Id", book.PublisherID);
+            ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name", book.AuthorID);
+            ViewData["CategoryID"] = new SelectList(_context.Category, "Id", "Name", book.CategoryID);
+            ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name", book.PublisherID);
             return View(book);
         }
 
@@ -138,9 +138,9 @@ namespace FPTBOOK_STORE.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Id", book.AuthorID);
-            ViewData["CategoryID"] = new SelectList(_context.Category, "Id", "Id", book.CategoryID);
-            ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Id", book.PublisherID);
+            ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name", book.AuthorID);
+            ViewData["CategoryID"] = new SelectList(_context.Category, "Id", "Name", book.CategoryID);
+            ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name", book.PublisherID);
             return View(book);
         }
 
