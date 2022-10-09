@@ -13,6 +13,7 @@ namespace FPTBOOK_STORE.Controllers
     public class BookController : Controller
     {
         private readonly MvcContext _context;
+         private string Layout ="StoreownerLayout"; 
         private readonly IWebHostEnvironment hostEnvironment;
 
         public BookController(MvcContext context, IWebHostEnvironment environment)
@@ -26,6 +27,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: Book
         public async Task<IActionResult> Index()
         {
+            ViewBag.Layout = Layout;
             var mvcContext = _context.Book.Include(b => b.Author).Include(b => b.Category).Include(b => b.Publisher);
             return View(await mvcContext.ToListAsync());
         }
@@ -33,6 +35,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: Book/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewBag.Layout = Layout;
             if (id == null || _context.Book == null)
             {
                 return NotFound();
@@ -54,6 +57,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: Book/Create
         public IActionResult Create()
         {
+            ViewBag.Layout = Layout;
             ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name");
             ViewData["CategoryID"] = new SelectList(_context.Category, "Id", "Name");
             ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name");
@@ -67,6 +71,7 @@ namespace FPTBOOK_STORE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Price,UploadImage,AuthorID,CategoryID,PublisherID")] Book book, IFormFile myfile)
         {
+            ViewBag.Layout = Layout;
             if (ModelState.IsValid)
             {
                 string filename = Path.GetFileName(myfile.FileName);
@@ -90,6 +95,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: Book/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.Layout = Layout;
             if (id == null || _context.Book == null)
             {
                 return NotFound();
@@ -113,6 +119,7 @@ namespace FPTBOOK_STORE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,UploadImage,AuthorID,CategoryID,PublisherID")] Book book)
         {
+            ViewBag.Layout = Layout;
             if (id != book.Id)
             {
                 return NotFound();
@@ -147,6 +154,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: Book/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewBag.Layout = Layout;
             if (id == null || _context.Book == null)
             {
                 return NotFound();
@@ -170,6 +178,7 @@ namespace FPTBOOK_STORE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            ViewBag.Layout = Layout;
             if (_context.Book == null)
             {
                 return Problem("Entity set 'MvcContext.Book'  is null.");
@@ -186,6 +195,7 @@ namespace FPTBOOK_STORE.Controllers
 
         private bool BookExists(int id)
         {
+          ViewBag.Layout = Layout;
           return (_context.Book?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }

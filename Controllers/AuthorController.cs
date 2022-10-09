@@ -21,6 +21,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: Author
         public async Task<IActionResult> Index()
         {
+            ViewBag.Layout = Layout;
               return _context.Author != null ? 
                           View(await _context.Author.ToListAsync()) :
                           Problem("Entity set 'MvcContext.Author'  is null.");
@@ -28,7 +29,8 @@ namespace FPTBOOK_STORE.Controllers
 
         // GET: Author/Details/5
         public async Task<IActionResult> Details(int? id)
-        {
+        {   
+            ViewBag.Layout = Layout;
             if (id == null || _context.Author == null)
             {
                 return NotFound();
@@ -58,6 +60,7 @@ namespace FPTBOOK_STORE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name")] Author author)
         {
+            ViewBag.Layout = Layout;
             if (ModelState.IsValid)
             {
                 _context.Add(author);
@@ -70,6 +73,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: Author/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.Layout = Layout;
             if (id == null || _context.Author == null)
             {
                 return NotFound();
@@ -90,6 +94,7 @@ namespace FPTBOOK_STORE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Author author)
         {
+            ViewBag.Layout = Layout;
             if (id != author.Id)
             {
                 return NotFound();
@@ -121,6 +126,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: Author/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewBag.Layout = Layout;
             if (id == null || _context.Author == null)
             {
                 return NotFound();
@@ -141,6 +147,7 @@ namespace FPTBOOK_STORE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            ViewBag.Layout = Layout;
             if (_context.Author == null)
             {
                 return Problem("Entity set 'MvcContext.Author'  is null.");
@@ -157,6 +164,7 @@ namespace FPTBOOK_STORE.Controllers
 
         private bool AuthorExists(int id)
         {
+            ViewBag.Layout = Layout;
           return (_context.Author?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }

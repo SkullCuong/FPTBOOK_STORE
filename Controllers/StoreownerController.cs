@@ -6,18 +6,12 @@ namespace MvcMovie.Controllers
     public class StoreownerController : Controller
     {
 
-
+        private string Layout ="StoreownerLayout"; 
         public IActionResult Index()
-        {
+        {   
+             ViewBag.Layout = Layout;
             return View();
         }
-        public IActionResult Home()
-        {
-            return View();
-        }
-
-
-
 
     }
 }

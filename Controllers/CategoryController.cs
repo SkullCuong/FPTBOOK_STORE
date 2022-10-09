@@ -12,7 +12,7 @@ namespace FPTBOOK_STORE.Controllers
     public class CategoryController : Controller
     {
         private readonly MvcContext _context;
-
+        private string Layout = "StoreownerLayout";
         public CategoryController(MvcContext context)
         {
             _context = context;
@@ -20,15 +20,17 @@ namespace FPTBOOK_STORE.Controllers
 
         // GET: Category
         public async Task<IActionResult> Index()
-        {
-              return _context.Category != null ? 
-                          View(await _context.Category.ToListAsync()) :
-                          Problem("Entity set 'MvcContext.Category'  is null.");
+        {   
+            ViewBag.Layout = Layout;
+            return _context.Category != null ?
+                        View(await _context.Category.ToListAsync()) :
+                        Problem("Entity set 'MvcContext.Category'  is null.");
         }
 
         // GET: Category/Details/5
         public async Task<IActionResult> Details(int? id)
-        {
+        {   
+            ViewBag.Layout = Layout;
             if (id == null || _context.Category == null)
             {
                 return NotFound();
@@ -46,7 +48,8 @@ namespace FPTBOOK_STORE.Controllers
 
         // GET: Category/Create
         public IActionResult Create()
-        {
+        {   
+            ViewBag.Layout = Layout;
             return View();
         }
 
@@ -57,6 +60,7 @@ namespace FPTBOOK_STORE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Status")] Category category)
         {
+            ViewBag.Layout = Layout;
             if (ModelState.IsValid)
             {
                 _context.Add(category);
@@ -69,6 +73,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: Category/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.Layout = Layout;
             if (id == null || _context.Category == null)
             {
                 return NotFound();
@@ -88,7 +93,8 @@ namespace FPTBOOK_STORE.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Status")] Category category)
-        {
+        {   
+            ViewBag.Layout = Layout;
             if (id != category.Id)
             {
                 return NotFound();
@@ -119,7 +125,8 @@ namespace FPTBOOK_STORE.Controllers
 
         // GET: Category/Delete/5
         public async Task<IActionResult> Delete(int? id)
-        {
+        {   
+            ViewBag.Layout = Layout;
             if (id == null || _context.Category == null)
             {
                 return NotFound();
@@ -139,7 +146,8 @@ namespace FPTBOOK_STORE.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
-        {
+        {   
+            ViewBag.Layout = Layout;
             if (_context.Category == null)
             {
                 return Problem("Entity set 'MvcContext.Category'  is null.");
@@ -149,14 +157,15 @@ namespace FPTBOOK_STORE.Controllers
             {
                 _context.Category.Remove(category);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CategoryExists(int id)
-        {
-          return (_context.Category?.Any(e => e.Id == id)).GetValueOrDefault();
+        {   
+            ViewBag.Layout = Layout;
+            return (_context.Category?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
