@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hunK0wZJHD3qf14Udt0zal862jVk9NV5ZKnp6S2zhTA=",
+  "Hash": "19KTlWP7hH91KPthMrNi7vJSDeawXhDYCZ8xgvI+7tg=",
   "Source": "FPTBOOK_STORE",
   "BasePath": "_content/FPTBOOK_STORE",
   "Mode": "Default",
@@ -219,23 +219,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\slick.min.css"
-    },
-    {
-      "Identity": "D:\\DATA\\SCHOOL\\1670\\asm2code\\FPTBOOK_STORE\\wwwroot\\css\\style.css",
-      "SourceId": "FPTBOOK_STORE",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\DATA\\SCHOOL\\1670\\asm2code\\FPTBOOK_STORE\\wwwroot\\",
-      "BasePath": "_content/FPTBOOK_STORE",
-      "RelativePath": "css/style.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
       "Identity": "D:\\DATA\\SCHOOL\\1670\\asm2code\\FPTBOOK_STORE\\wwwroot\\css\\templatemo.css",

@@ -12,7 +12,7 @@ namespace FPTBOOK_STORE.Controllers
     public class UserController : Controller
     {
         private readonly MvcContext _context;
-
+        private string Layout = "AdminLayout";
         public UserController(MvcContext context)
         {
             _context = context;
@@ -21,6 +21,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: User
         public async Task<IActionResult> Index()
         {
+            ViewBag.Layout = Layout;
               return _context.User != null ? 
                           View(await _context.User.ToListAsync()) :
                           Problem("Entity set 'MvcContext.User'  is null.");
@@ -29,6 +30,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: User/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewBag.Layout = Layout;
             if (id == null || _context.User == null)
             {
                 return NotFound();
@@ -47,6 +49,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: User/Create
         public IActionResult Create()
         {
+            ViewBag.Layout = Layout;
             return View();
         }
 
@@ -57,6 +60,7 @@ namespace FPTBOOK_STORE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Gmail,Password,BirthDate,Address,Role,Phone")] User user)
         {
+            ViewBag.Layout = Layout;
             if (ModelState.IsValid)
             {
                 _context.Add(user);
@@ -69,6 +73,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: User/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.Layout = Layout;
             if (id == null || _context.User == null)
             {
                 return NotFound();
@@ -89,6 +94,7 @@ namespace FPTBOOK_STORE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Gmail,Password,BirthDate,Address,Role,Phone")] User user)
         {
+            ViewBag.Layout = Layout;
             if (id != user.Id)
             {
                 return NotFound();
@@ -120,6 +126,7 @@ namespace FPTBOOK_STORE.Controllers
         // GET: User/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewBag.Layout = Layout;
             if (id == null || _context.User == null)
             {
                 return NotFound();
@@ -140,6 +147,7 @@ namespace FPTBOOK_STORE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            ViewBag.Layout = Layout;
             if (_context.User == null)
             {
                 return Problem("Entity set 'MvcContext.User'  is null.");
@@ -156,6 +164,7 @@ namespace FPTBOOK_STORE.Controllers
 
         private bool UserExists(int id)
         {
+            ViewBag.Layout = Layout;
           return (_context.User?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }

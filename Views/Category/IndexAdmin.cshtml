@@ -17,11 +17,6 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Name)
                         </th>
-
-                        <th>
-                            @Html.DisplayNameFor(model => model.Status)
-                        </th>
-                        
                         <th>Option</th>
                     </tr>
                 </thead>
@@ -33,10 +28,7 @@
                                 @Html.DisplayFor(modelItem => item.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Status)
-                            </td>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success"
+                                <a asp-action="EditAdmin" asp-route-id="@item.Id" class="btn btn-success"
                                 style="font-size:7px ;"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
                                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"
                                 style="font-size:7px"><i class="fa-sharp fa-solid fa-trash"></i></a>
