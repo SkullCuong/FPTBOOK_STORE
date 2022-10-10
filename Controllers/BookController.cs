@@ -36,7 +36,6 @@ namespace FPTBOOK_STORE.Controllers
         // GET: Book/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            ViewBag.Layout = Layout;
             if (id == null || _context.Book == null)
             {
                 return NotFound();
@@ -262,6 +261,13 @@ namespace FPTBOOK_STORE.Controllers
             HttpContext.Session.SetObject("cart",cart);
             
             return RedirectToAction("CheckOut", "Book");
+        }
+        public async Task<IActionResult> BookHome(){
+            var mvcContext = _context.Book.Include(b => b.Author).Include(b => b.Category).Include(b => b.Publisher);
+            return View(await mvcContext.ToListAsync());
+        }
+        public async Task<IActionResult> ContactUs(){
+            return View();
         }
     }
 }
