@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Wo69+TS+hRoVX5sVaPhPOB9E06JsymnYM+ijPU8uv4w=",
+  "Hash": "hdAMpg70U4f6Umn0rfSVGGXh4B3do6W6Krx7zyt9AAs=",
   "Source": "FPTBOOK_STORE",
   "BasePath": "_content/FPTBOOK_STORE",
   "Mode": "Default",
@@ -2378,6 +2378,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\ERS295XU4AA-vHb.jfif"
+    },
+    {
+      "Identity": "E:\\Codes\\FPTBOOK_STORE\\wwwroot\\uploads\\png-clipart-gmail-gmail.png",
+      "SourceId": "FPTBOOK_STORE",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Codes\\FPTBOOK_STORE\\wwwroot\\",
+      "BasePath": "_content/FPTBOOK_STORE",
+      "RelativePath": "uploads/png-clipart-gmail-gmail.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\png-clipart-gmail-gmail.png"
     },
     {
       "Identity": "E:\\Codes\\FPTBOOK_STORE\\wwwroot\\webfonts\\fa-brands-400.eot",

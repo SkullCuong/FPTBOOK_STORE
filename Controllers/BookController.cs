@@ -107,9 +107,9 @@ namespace FPTBOOK_STORE.Controllers
             {
                 return NotFound();
             }
-            ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Id", book.AuthorID);
-            ViewData["CategoryID"] = new SelectList(_context.Category, "Id", "Id", book.CategoryID);
-            ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Id", book.PublisherID);
+            ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name", book.AuthorID);
+            ViewData["CategoryID"] = new SelectList(_context.Category, "Id", "Name", book.CategoryID);
+            ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name", book.PublisherID);
             return View(book);
         }
 
