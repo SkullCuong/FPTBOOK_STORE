@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7AXOsuM41F46lhZLxz4GvL2uZ7ZLyO9xm6zSbGcAucg=",
+  "Hash": "1bsQ0aVx/QFqiUsto9p8MYGnzApUPmPbhktztIb1wnM=",
   "Source": "FPTBOOK_STORE",
   "BasePath": "_content/FPTBOOK_STORE",
   "Mode": "Default",
@@ -2244,6 +2244,40 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
+      "Identity": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\uploads\\1fab3759d4c550c9_45974a31b0337152_6700315474670197154671.jpg",
+      "SourceId": "FPTBOOK_STORE",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\",
+      "BasePath": "_content/FPTBOOK_STORE",
+      "RelativePath": "uploads/1fab3759d4c550c9_45974a31b0337152_6700315474670197154671.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\1fab3759d4c550c9_45974a31b0337152_6700315474670197154671.jpg"
+    },
+    {
+      "Identity": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\uploads\\2446a0920262557b1108c3cd999adb29.jpg",
+      "SourceId": "FPTBOOK_STORE",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\",
+      "BasePath": "_content/FPTBOOK_STORE",
+      "RelativePath": "uploads/2446a0920262557b1108c3cd999adb29.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\2446a0920262557b1108c3cd999adb29.jpg"
+    },
+    {
       "Identity": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\uploads\\67e679e61899cf6309fa640ead98ffc4.jpg",
       "SourceId": "FPTBOOK_STORE",
       "SourceType": "Discovered",
@@ -2259,6 +2293,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\67e679e61899cf6309fa640ead98ffc4.jpg"
+    },
+    {
+      "Identity": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\uploads\\751b324cac95683fbcafcf7859c6e928.jpg",
+      "SourceId": "FPTBOOK_STORE",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\",
+      "BasePath": "_content/FPTBOOK_STORE",
+      "RelativePath": "uploads/751b324cac95683fbcafcf7859c6e928.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\751b324cac95683fbcafcf7859c6e928.jpg"
     },
     {
       "Identity": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\uploads\\9d9571a83a8cf8d2a19d.jpg",
@@ -2278,6 +2329,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\9d9571a83a8cf8d2a19d.jpg"
     },
     {
+      "Identity": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\uploads\\bb95b0f7f36410b20dac3d27fa1e1f91.jpg",
+      "SourceId": "FPTBOOK_STORE",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\",
+      "BasePath": "_content/FPTBOOK_STORE",
+      "RelativePath": "uploads/bb95b0f7f36410b20dac3d27fa1e1f91.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\bb95b0f7f36410b20dac3d27fa1e1f91.jpg"
+    },
+    {
       "Identity": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\uploads\\download.jpg",
       "SourceId": "FPTBOOK_STORE",
       "SourceType": "Discovered",
@@ -2293,6 +2361,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\download.jpg"
+    },
+    {
+      "Identity": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\uploads\\ERS295XU4AA-vHb.jfif",
+      "SourceId": "FPTBOOK_STORE",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\",
+      "BasePath": "_content/FPTBOOK_STORE",
+      "RelativePath": "uploads/ERS295XU4AA-vHb.jfif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\ERS295XU4AA-vHb.jfif"
     },
     {
       "Identity": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\webfonts\\fa-brands-400.eot",

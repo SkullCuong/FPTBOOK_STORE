@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FPTBOOK_STORE.Models;
 using Microsoft.Extensions.Caching.Memory;
+using FPTBOOK_STORE.Utils;
 
 namespace FPTBOOK_STORE.Controllers
 {
@@ -197,6 +198,70 @@ namespace FPTBOOK_STORE.Controllers
         {
           ViewBag.Layout = Layout;
           return (_context.Book?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+        [HttpPost]
+        public IActionResult AddToCart(int id,string name,double price,int quantity)
+        {
+           ShoppingCart myCart;
+
+        if (HttpContext.Session.GetObject<ShoppingCart>("cart") == null) {
+            myCart = new ShoppingCart();
+            HttpContext.Session.SetObject("cart",myCart);
+        } 
+        myCart= (ShoppingCart)HttpContext.Session.GetObject<ShoppingCart>("cart");
+        var newItem=myCart.AddItem(id,name,price,quantity);
+        HttpContext.Session.SetObject("cart",myCart);
+        ViewData["newItem"]=newItem;
+        return View();
+        }
+        public IActionResult CheckOut()
+        {            
+            ShoppingCart cart=(ShoppingCart) HttpContext.Session.GetObject<ShoppingCart>("cart");
+            ViewData["myItems"]=cart.Items;
+            return View();
+        }
+        public IActionResult PlaceOrder(decimal total)
+        {            
+            ShoppingCart cart=(ShoppingCart) HttpContext.Session.GetObject<ShoppingCart>("cart");
+            Order myOrder=new Order();
+            myOrder.OrderDate=DateTime.Now;
+            myOrder.Status=0;
+            // myOrder.User =;
+            _context.Order.Add(myOrder);
+            _context.SaveChanges();//this generates the Id for Order
+           
+            foreach(var item in cart.Items)
+            {
+                OrderDetail myOrderItem=new OrderDetail();
+                myOrderItem.BookID=item.Id;
+                myOrderItem.Quantity=item.Quantity;
+                myOrderItem.OrderID=myOrder.Id;//id of saved order above
+                
+                _context.OrderDetail.Add(myOrderItem);
+            }
+            _context.SaveChanges();
+            //empty shopping cart
+            cart=new ShoppingCart();
+            HttpContext.Session.SetObject("cart",cart);
+            return View();
+        }
+        [HttpPost]
+        public RedirectToActionResult EditOrder(int id,int quantity)
+        {
+            ShoppingCart cart=(ShoppingCart) HttpContext.Session.GetObject<ShoppingCart>("cart");
+            cart.EditItem(id,quantity);
+            HttpContext.Session.SetObject("cart",cart);
+            
+            return RedirectToAction("CheckOut", "Book");
+        }
+        [HttpPost]
+        public RedirectToActionResult RemoveOrderItem(int id)
+        {
+            ShoppingCart cart=(ShoppingCart) HttpContext.Session.GetObject<ShoppingCart>("cart");
+            cart.RemoveItem(id);
+            HttpContext.Session.SetObject("cart",cart);
+            
+            return RedirectToAction("CheckOut", "Book");
         }
     }
 }

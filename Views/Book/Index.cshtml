@@ -58,6 +58,8 @@
                                 @Html.DisplayFor(modelItem => item.Publisher.Name)
                             </td>
                             <td>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success"
+                                style="font-size:7px ;"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
                                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success"
                                 style="font-size:7px ;"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
                                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"
