@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Codes\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj": {}
+    "C:\\ASM2 Application\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj": {}
   },
   "projects": {
-    "E:\\Codes\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj": {
+    "C:\\ASM2 Application\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Codes\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj",
+        "projectUniqueName": "C:\\ASM2 Application\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj",
         "projectName": "FPTBOOK_STORE",
-        "projectPath": "E:\\Codes\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj",
-        "packagesPath": "C:\\Users\\jacks\\.nuget\\packages\\",
-        "outputPath": "E:\\Codes\\FPTBOOK_STORE\\obj\\",
+        "projectPath": "C:\\ASM2 Application\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj",
+        "packagesPath": "C:\\Users\\GF63\\.nuget\\packages\\",
+        "outputPath": "C:\\ASM2 Application\\FPTBOOK_STORE\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jacks\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\GF63\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
