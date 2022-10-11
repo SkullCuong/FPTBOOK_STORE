@@ -5,16 +5,26 @@
 }
 
 <h1>Details</h1>
+<a asp-action="Index" class = "btn btn-success" >Back to List</a>
+<div style="text-align:center; Align:center;">
+    <form asp-action="AddToCart" method="post">
+    <input type="hidden" name="id" value="@Model.Id"/>
+    <input type="hidden" name="name" value="@Model.Name"/>
+    <input type="hidden" name="price" value="@Model.Price"/>
+    <input type="number" name="quantity" min=1 value=1/>
+    <input type="submit" value="Add To Cart" class="btn btn-primary"/>   
+    </form>    
+    </div>
 <section class="bg-light">
         <div class="container pb-5">
             <div class="row">
-                <div class="col-lg-5 mt-5">
+                <div class="col-lg-6 mt-5">
                     <div class="card mb-3">
                         <img class="card-img img-fluid" src="~/uploads/@Html.DisplayFor(model => model.UploadImage)" alt="Card image cap" id="product-detail">
                     </div>
                 </div>
                 <!-- col end -->
-                <div class="col-lg-7 mt-5">
+                <div class="col-lg-5 mt-5">
                     <div class="card">
                         <div class="card-body">
                             <h1 class="h2"> @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h1>
@@ -48,19 +58,6 @@
                                 <li>Dolore magna aliqua</li>
                                 <li>Excepteur sint</li>
                             </ul>
-                            <div>
-                            <form asp-action="AddToCart" method="post">
-                                <input type="hidden" name="id" value="@Model.Id"/>
-                                <input type="hidden" name="name" value="@Model.Name"/>
-                                <input type="hidden" name="price" value="@Model.Price"/>
-                                <input type="number" name="quantity" min=1 value=1/>
-                                <input type="submit" value="Add To Cart" class="btn btn-primary"/>    
-                            </form>    
-                            </div>
-                            <div>
-                                <a asp-action="Edit" class = "btn btn-primary" asp-route-id="@Model?.Id">Edit</a> |
-                                <a asp-action="Index" class = "btn btn-success" >Back to List</a>
-                            </div>
                         </div>
                     </div>
                 </div>
