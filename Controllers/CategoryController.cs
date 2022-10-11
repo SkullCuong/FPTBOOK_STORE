@@ -13,6 +13,7 @@ namespace FPTBOOK_STORE.Controllers
     {
         private readonly MvcContext _context;
         private string Layout = "StoreownerLayout";
+        private string _Layout = "AdminLayout";
         public CategoryController(MvcContext context)
         {
             _context = context;
@@ -167,6 +168,63 @@ namespace FPTBOOK_STORE.Controllers
             ViewBag.Layout = Layout;
             return (_context.Category?.Any(e => e.Id == id)).GetValueOrDefault();
         }
-        
+        public async Task<IActionResult> IndexAdmin()
+        {   
+            ViewBag.Layout = _Layout;
+            return _context.Category != null ?
+                        View(await _context.Category.ToListAsync()) :
+                        Problem("Entity set 'MvcContext.Category'  is null.");
+        }
+        public async Task<IActionResult> EditAdmin(int? id)
+        {
+            ViewBag.Layout = _Layout;
+            if (id == null || _context.Category == null)
+            {
+                return NotFound();
+            }
+
+            var category = await _context.Category.FindAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
+        }
+
+        // POST: Category/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditAdmin(int id, [Bind("Id,Name,Status")] Category category)
+        {   
+            ViewBag.Layout = _Layout;
+            if (id != category.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(category);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CategoryExists(category.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(IndexAdmin));
+            }
+            return View(category);
+        }
     }
 }
