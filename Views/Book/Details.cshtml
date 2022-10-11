@@ -3,18 +3,9 @@
 @{
     ViewData["Title"] = "Details";
 }
-
+<div style = "margin-top: 70px;">
 <h1>Details</h1>
 <a asp-action="Index" class = "btn btn-success" >Back to List</a>
-<div style="text-align:center; Align:center;">
-    <form asp-action="AddToCart" method="post">
-    <input type="hidden" name="id" value="@Model.Id"/>
-    <input type="hidden" name="name" value="@Model.Name"/>
-    <input type="hidden" name="price" value="@Model.Price"/>
-    <input type="number" name="quantity" min=1 value=1/>
-    <input type="submit" value="Add To Cart" class="btn btn-primary"/>   
-    </form>    
-    </div>
 <section class="bg-light">
         <div class="container pb-5">
             <div class="row">
@@ -58,9 +49,19 @@
                                 <li>Dolore magna aliqua</li>
                                 <li>Excepteur sint</li>
                             </ul>
+                            <div style="text-align:center; Align:center;">
+                                <form asp-action="AddToCart" method="post">
+                                <input type="hidden" name="id" value="@Model.Id"/>
+                                <input type="hidden" name="name" value="@Model.Name"/>
+                                <input type="hidden" name="price" value="@Model.Price"/>
+                                <input type="number" class="btn btn-light" name="quantity" min=1 value=1 placeholder="Quantity"/>
+                                <input type="submit" value="Add To Cart" class="btn btn-primary"/>   
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+</div>

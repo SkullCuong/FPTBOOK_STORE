@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1bsQ0aVx/QFqiUsto9p8MYGnzApUPmPbhktztIb1wnM=",
+  "Hash": "0CWPu4KZx4CBcbF9T3Hrli23+Jxtx9cX2ZJDFPjXxy0=",
   "Source": "FPTBOOK_STORE",
   "BasePath": "_content/FPTBOOK_STORE",
   "Mode": "Default",
@@ -151,6 +151,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\fontawesome.min.css"
+    },
+    {
+      "Identity": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\css\\Footer.css",
+      "SourceId": "FPTBOOK_STORE",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\",
+      "BasePath": "_content/FPTBOOK_STORE",
+      "RelativePath": "css/Footer.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Footer.css"
+    },
+    {
+      "Identity": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\css\\Nav.css",
+      "SourceId": "FPTBOOK_STORE",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\",
+      "BasePath": "_content/FPTBOOK_STORE",
+      "RelativePath": "css/Nav.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Nav.css"
     },
     {
       "Identity": "C:\\ASM2 Application\\FPTBOOK_STORE\\wwwroot\\css\\site.css",

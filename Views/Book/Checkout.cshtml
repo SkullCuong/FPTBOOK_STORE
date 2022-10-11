@@ -3,7 +3,7 @@
 List<CartItem> myItems=(List<CartItem>)ViewData["myItems"];
     double total=0;
 }
-<table class="table table-striped">
+<table class="table table-striped" style = "margin-top:150px">
 <tr><th>Title</th>
     <th>Price</th>
     <th>Quantity</th>
@@ -39,7 +39,7 @@ List<CartItem> myItems=(List<CartItem>)ViewData["myItems"];
         <td>@total</td>
     </tr>
 </table>
-<form asp-action="PlaceOrder" method="post">
+<form asp-action="PlaceOrder" method="post" style = "margin-bottom:150px">
         <input type="hidden" name="total" value="@total"/>        
         <input type="submit" value="Order" class="btn btn-primary"/>    
 </form>
