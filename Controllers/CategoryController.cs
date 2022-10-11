@@ -167,5 +167,6 @@ namespace FPTBOOK_STORE.Controllers
             ViewBag.Layout = Layout;
             return (_context.Category?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+        
     }
 }
