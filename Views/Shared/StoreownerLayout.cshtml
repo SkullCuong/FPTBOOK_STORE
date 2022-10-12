@@ -37,10 +37,14 @@
 
 					<li class="sidebar-item ">
 						<a class="sidebar-link" asp-controller="storeowner" asp-action="index">
-							<i class="align-middle fa-solid fa-house" ></i> <span class="align-middle">Home</span>
+							<i class="align-middle fa-solid fa-house"></i> <span class="align-middle">Home</span>
 						</a>
 					</li>
-
+					<li class="sidebar-item ">
+						<a class="sidebar-link" asp-controller="storeowner" asp-action="chart">
+							<i class="align-middle fa-solid fa-chart-simple"></i> <span class="align-middle">Dashboard</span>
+						</a>
+					</li>
 					<li class="sidebar-item">
 						<a class="sidebar-link" asp-controller="author" asp-action="index">
 							<i class="align-middle fa-solid fa-user"></i> <span class="align-middle">Author</span>
@@ -49,16 +53,16 @@
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" asp-controller="category" asp-action="index">
-							<i class="align-middle fa-solid fa-list" ></i> <span class="align-middle">Category</span>
+							<i class="align-middle fa-solid fa-list"></i> <span class="align-middle">Category</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" asp-controller="publisher" asp-action="index">
-							<i class="align-middle fa-solid fa-shop" ></i> <span class="align-middle">Publisher</span>
+							<i class="align-middle fa-solid fa-shop"></i> <span class="align-middle">Publisher</span>
 						</a>
 					</li>
-					
+
 					<li class="sidebar-item">
 						<a class="sidebar-link" asp-controller="book" asp-action="index">
 							<i class="align-middle fa-solid fa-book"></i> <span class="align-middle">Book</span>
@@ -144,8 +148,9 @@
 	</div>
 
 	<script src="~/js/app.js"></script>
+
 	@await RenderSectionAsync("Scripts", required: false)
 </body>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </html>

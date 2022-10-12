@@ -269,5 +269,9 @@ namespace FPTBOOK_STORE.Controllers
         public async Task<IActionResult> ContactUs(){
             return View();
         }
+        public IActionResult Chart(){
+            ViewBag.Layout = Layout;
+            return View();
+        }
     }
 }
