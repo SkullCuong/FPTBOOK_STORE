@@ -58,8 +58,9 @@ namespace FPTBOOK_STORE.Controllers
         public IActionResult Create()
         {
             ViewBag.Layout = Layout;
+            var data =  _context.Category.Where(m => m.Status == 1);
             ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name");
-            ViewData["CategoryID"] = new SelectList(_context.Category, "Id", "Name");
+            ViewData["CategoryID"] = new SelectList(data, "Id", "Name");
             ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name");
             return View();
         }
@@ -86,8 +87,13 @@ namespace FPTBOOK_STORE.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            var data = _context.Category;
+            foreach(var item in data){
+                Console.WriteLine(item.Name);
+            }
+            
             ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name", book.AuthorID);
-            ViewData["CategoryID"] = new SelectList(_context.Category, "Id", "Name", book.CategoryID);
+            ViewData["CategoryID"] = new SelectList(_context.Category, "Id", "Name",book.AuthorID);
             ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name", book.PublisherID);
             return View(book);
         }
@@ -106,8 +112,9 @@ namespace FPTBOOK_STORE.Controllers
             {
                 return NotFound();
             }
+            var data =  _context.Category.Where(m => m.Status == 1);
             ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name", book.AuthorID);
-            ViewData["CategoryID"] = new SelectList(_context.Category, "Id", "Name", book.CategoryID);
+            ViewData["CategoryID"] = new SelectList(data, "Id", "Name", book.CategoryID);
             ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name", book.PublisherID);
             return View(book);
         }
@@ -145,6 +152,7 @@ namespace FPTBOOK_STORE.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            
             ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name", book.AuthorID);
             ViewData["CategoryID"] = new SelectList(_context.Category, "Id", "Name", book.CategoryID);
             ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name", book.PublisherID);
@@ -153,7 +161,8 @@ namespace FPTBOOK_STORE.Controllers
 
         // GET: Book/Delete/5
         public async Task<IActionResult> Delete(int? id)
-        {
+        {   
+            Console.WriteLine(id);
             ViewBag.Layout = Layout;
             if (id == null || _context.Book == null)
             {
