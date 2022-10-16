@@ -1,9 +1,6 @@
 @model FPTBOOK_STORE.Models.Author
 
-@{
-    ViewData["Title"] = "Edit";
-}
-
+<title>Edit Author</title>
 <div class="row">
     <div class="col-12 col-lg-10 col-xxl-12 d-flex">
         <div class="card flex-fill">
@@ -12,7 +9,7 @@
             </div>
             <div class="row" style="margin-left:10px">
                 <div class="col-md-6">
-                    <form asp-action="Create">
+                    <form asp-action="Edit">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
                             <label asp-for="Name" class="control-label"></label>

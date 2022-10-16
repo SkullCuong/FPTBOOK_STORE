@@ -34,13 +34,12 @@ app.UseSession();
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
+    pattern: "{controller=}/{action=}/{id}");
+app.MapControllerRoute(
+    name: "default",
     pattern: "{controller=Book}/{action=BookHome}/");
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=index}/");
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Category}/{action=indexAdmin}/{id}");
+
+
 
 
 app.Run();

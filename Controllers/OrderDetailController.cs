@@ -10,7 +10,8 @@ using FPTBOOK_STORE.Models;
 namespace FPTBOOK_STORE.Controllers
 {
     public class OrderDetailController : Controller
-    {
+    {   
+        private string Layout ="StoreownerLayout"; 
         private readonly MvcContext _context;
 
         public OrderDetailController(MvcContext context)
@@ -19,9 +20,11 @@ namespace FPTBOOK_STORE.Controllers
         }
 
         // GET: OrderDetail
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
+            ViewBag.Layout = Layout;
             var mvcContext = _context.OrderDetail.Include(o => o.Book).Include(o => o.Order);
+            ViewBag.id = id;
             return View(await mvcContext.ToListAsync());
         }
 

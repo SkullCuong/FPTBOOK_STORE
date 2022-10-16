@@ -10,7 +10,8 @@ using FPTBOOK_STORE.Models;
 namespace FPTBOOK_STORE.Controllers
 {
     public class OrderController : Controller
-    {
+    {   
+        private string Layout ="StoreownerLayout"; 
         private readonly MvcContext _context;
 
         public OrderController(MvcContext context)
@@ -20,7 +21,8 @@ namespace FPTBOOK_STORE.Controllers
 
         // GET: Order
         public async Task<IActionResult> Index()
-        {
+        {   
+            ViewBag.Layout = Layout;
             var mvcContext = _context.Order.Include(o => o.User);
             return View(await mvcContext.ToListAsync());
         }
@@ -45,9 +47,9 @@ namespace FPTBOOK_STORE.Controllers
         }
 
         // GET: Order/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
-            ViewData["UserID"] = new SelectList(_context.User, "Id", "Id");
+            ViewData["UserID"] = new SelectList(_context.User, "Id", "Name");
             return View();
         }
 
