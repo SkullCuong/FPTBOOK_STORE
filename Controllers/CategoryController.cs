@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FPTBOOK_STORE.Models;
-
+using FPTBOOK_STORE.Areas.Identity.Data;
 namespace FPTBOOK_STORE.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly MvcContext _context;
+        private readonly FPTBOOK_STOREIdentityDbContext _context;
         private string Layout = "StoreownerLayout";
         private string _Layout = "AdminLayout";
-        public CategoryController(MvcContext context)
+        public CategoryController(FPTBOOK_STOREIdentityDbContext context)
         {
             _context = context;
         }
@@ -25,7 +25,7 @@ namespace FPTBOOK_STORE.Controllers
             ViewBag.Layout = Layout;
             return _context.Category != null ?
                         View(await _context.Category.ToListAsync()) :
-                        Problem("Entity set 'MvcContext.Category'  is null.");
+                        Problem("Entity set 'FPTBOOK_STOREIdentityDbContext.Category'  is null.");
         }
 
         // GET: Category/Details/5
@@ -151,7 +151,7 @@ namespace FPTBOOK_STORE.Controllers
             ViewBag.Layout = Layout;
             if (_context.Category == null)
             {
-                return Problem("Entity set 'MvcContext.Category'  is null.");
+                return Problem("Entity set 'FPTBOOK_STOREIdentityDbContext.Category'  is null.");
             }
             var category = await _context.Category.FindAsync(id);
             if (category != null)
@@ -173,7 +173,7 @@ namespace FPTBOOK_STORE.Controllers
             ViewBag.Layout = _Layout;
             return _context.Category != null ?
                         View(await _context.Category.ToListAsync()) :
-                        Problem("Entity set 'MvcContext.Category'  is null.");
+                        Problem("Entity set 'FPTBOOK_STOREIdentityDbContext.Category'  is null.");
         }
         public async Task<IActionResult> EditAdmin(int? id)
         {

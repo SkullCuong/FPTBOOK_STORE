@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FPTBOOK_STORE.Models;
-
+using FPTBOOK_STORE.Areas.Identity.Data;
 namespace FPTBOOK_STORE.Controllers
 {
     public class AuthorController : Controller
     {
-        private readonly MvcContext _context;
+        private readonly FPTBOOK_STOREIdentityDbContext _context;
         private string Layout ="StoreownerLayout"; 
-        public AuthorController(MvcContext context)
+        public AuthorController(FPTBOOK_STOREIdentityDbContext context)
         {
             _context = context;
         }
@@ -24,7 +24,7 @@ namespace FPTBOOK_STORE.Controllers
             ViewBag.Layout = Layout;
               return _context.Author != null ? 
                           View(await _context.Author.ToListAsync()) :
-                          Problem("Entity set 'MvcContext.Author'  is null.");
+                          Problem("Entity set 'FPTBOOK_STOREIdentityDbContext.Author'  is null.");
         }
 
         // GET: Author/Details/5
@@ -150,7 +150,7 @@ namespace FPTBOOK_STORE.Controllers
             ViewBag.Layout = Layout;
             if (_context.Author == null)
             {
-                return Problem("Entity set 'MvcContext.Author'  is null.");
+                return Problem("Entity set 'FPTBOOK_STOREIdentityDbContext.Author'  is null.");
             }
             var author = await _context.Author.FindAsync(id);
             if (author != null)

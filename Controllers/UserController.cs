@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FPTBOOK_STORE.Models;
-
+using FPTBOOK_STORE.Areas.Identity.Data;
 namespace FPTBOOK_STORE.Controllers
 {
     public class UserController : Controller
     {
-        private readonly MvcContext _context;
+        private readonly FPTBOOK_STOREIdentityDbContext _context;
         private string Layout = "AdminLayout";
-        public UserController(MvcContext context)
+        public UserController(FPTBOOK_STOREIdentityDbContext context)
         {
             _context = context;
         }
@@ -24,7 +24,7 @@ namespace FPTBOOK_STORE.Controllers
             ViewBag.Layout = Layout;
               return _context.User != null ? 
                           View(await _context.User.ToListAsync()) :
-                          Problem("Entity set 'MvcContext.User'  is null.");
+                          Problem("Entity set 'FPTBOOK_STOREIdentityDbContext.User'  is null.");
         }
 
         // GET: User/Details/5
@@ -150,7 +150,7 @@ namespace FPTBOOK_STORE.Controllers
             ViewBag.Layout = Layout;
             if (_context.User == null)
             {
-                return Problem("Entity set 'MvcContext.User'  is null.");
+                return Problem("Entity set 'FPTBOOK_STOREIdentityDbContext.User'  is null.");
             }
             var user = await _context.User.FindAsync(id);
             if (user != null)

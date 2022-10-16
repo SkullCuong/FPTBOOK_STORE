@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Codes\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj": {}
+    "D:\\DATA\\SCHOOL\\1670\\asm2code\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj": {}
   },
   "projects": {
-    "E:\\Codes\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj": {
+    "D:\\DATA\\SCHOOL\\1670\\asm2code\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Codes\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj",
+        "projectUniqueName": "D:\\DATA\\SCHOOL\\1670\\asm2code\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj",
         "projectName": "FPTBOOK_STORE",
-        "projectPath": "E:\\Codes\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj",
-        "packagesPath": "C:\\Users\\jacks\\.nuget\\packages\\",
-        "outputPath": "E:\\Codes\\FPTBOOK_STORE\\obj\\",
+        "projectPath": "D:\\DATA\\SCHOOL\\1670\\asm2code\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj",
+        "packagesPath": "C:\\Users\\minh dan\\.nuget\\packages\\",
+        "outputPath": "D:\\DATA\\SCHOOL\\1670\\asm2code\\FPTBOOK_STORE\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\jacks\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\minh dan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,15 +44,19 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.9, )"
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.9, )"
+              "version": "[6.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.SQLite": {
               "target": "Package",
@@ -56,7 +64,13 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.9, )"
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.10, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -82,7 +96,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

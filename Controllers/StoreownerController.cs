@@ -5,14 +5,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FPTBOOK_STORE.Models;
-
-namespace MvcMovie.Controllers
+using FPTBOOK_STORE.Areas.Identity.Data;
+namespace FPTBOOK_STORE.Controllers
 {
     public class StoreownerController : Controller
     {
-        private readonly MvcContext _context;
+        private readonly FPTBOOK_STOREIdentityDbContext _context;
 
-        public StoreownerController(MvcContext context)
+        public StoreownerController(FPTBOOK_STOREIdentityDbContext context)
         {
             _context = context;
         }

@@ -10,13 +10,13 @@ using FPTBOOK_STORE.Models;
 using FPTBOOK_STORE.Controllers;
 using Microsoft.Extensions.Caching.Memory;
 using FPTBOOK_STORE.Utils;
-
+using FPTBOOK_STORE.Areas.Identity.Data;
 namespace FPTBOOK_STORE.Controllers{
 
 public class HomeController : Controller
 {
         private readonly ILogger<HomeController> _logger;
-        private readonly MvcContext _context;
+        private readonly FPTBOOK_STOREIdentityDbContext _context;
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;

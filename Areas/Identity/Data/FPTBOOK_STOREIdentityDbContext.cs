@@ -1,19 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using FPTBOOK_STORE.Models;
 
-public class MvcContext : DbContext
+namespace FPTBOOK_STORE.Areas.Identity.Data;
+
+public class FPTBOOK_STOREIdentityDbContext : IdentityDbContext<IdentityUser>
 {
-    public MvcContext(DbContextOptions<MvcContext> options)
+    public FPTBOOK_STOREIdentityDbContext(DbContextOptions<FPTBOOK_STOREIdentityDbContext> options)
         : base(options)
     {
-
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<FPTBOOK_STORE.Models.Book>()
         .Property(p => p.Price).HasColumnType("decimal(18,4)");
         modelBuilder.Entity<FPTBOOK_STORE.Models.Category>()

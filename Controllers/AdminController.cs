@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Encodings.Web;
 
-namespace MvcMovie.Controllers
+namespace FPTBOOK_STORE.Controllers
 {
     public class AdminController : Controller
     {

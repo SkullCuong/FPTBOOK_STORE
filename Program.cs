@@ -1,8 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity;
+using FPTBOOK_STORE.Areas.Identity.Data;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<MvcContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("MvcContext") ?? throw new InvalidOperationException("Connection string 'MvcContext' not found.")));
+builder.Services.AddDbContext<FPTBOOK_STOREIdentityDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("FPTBOOK_STOREIdentityDbContextConnection") ?? throw new InvalidOperationException("Connection string 'FPTBOOK_STOREIdentityDbContextConnection' not found.")));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<FPTBOOK_STOREIdentityDbContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -30,6 +35,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseSession();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 app.MapControllerRoute(
@@ -41,5 +47,5 @@ app.MapControllerRoute(
 
 
 
-
+app.MapRazorPages();
 app.Run();

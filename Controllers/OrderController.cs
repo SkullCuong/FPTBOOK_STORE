@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FPTBOOK_STORE.Models;
-
+using FPTBOOK_STORE.Areas.Identity.Data;
 namespace FPTBOOK_STORE.Controllers
 {
     public class OrderController : Controller
     {   
         private string Layout ="StoreownerLayout"; 
-        private readonly MvcContext _context;
+        private readonly FPTBOOK_STOREIdentityDbContext _context;
 
-        public OrderController(MvcContext context)
+        public OrderController(FPTBOOK_STOREIdentityDbContext context)
         {
             _context = context;
         }
@@ -23,8 +23,8 @@ namespace FPTBOOK_STORE.Controllers
         public async Task<IActionResult> Index()
         {   
             ViewBag.Layout = Layout;
-            var mvcContext = _context.Order.Include(o => o.User);
-            return View(await mvcContext.ToListAsync());
+            var FPTBOOK_STOREIdentityDbContext = _context.Order.Include(o => o.User);
+            return View(await FPTBOOK_STOREIdentityDbContext.ToListAsync());
         }
 
         // GET: Order/Details/5
@@ -149,7 +149,7 @@ namespace FPTBOOK_STORE.Controllers
         {
             if (_context.Order == null)
             {
-                return Problem("Entity set 'MvcContext.Order'  is null.");
+                return Problem("Entity set 'FPTBOOK_STOREIdentityDbContext.Order'  is null.");
             }
             var order = await _context.Order.FindAsync(id);
             if (order != null)

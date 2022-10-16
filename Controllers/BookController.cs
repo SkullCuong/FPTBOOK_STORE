@@ -8,16 +8,16 @@ using Microsoft.EntityFrameworkCore;
 using FPTBOOK_STORE.Models;
 using Microsoft.Extensions.Caching.Memory;
 using FPTBOOK_STORE.Utils;
-
+using FPTBOOK_STORE.Areas.Identity.Data;
 namespace FPTBOOK_STORE.Controllers
 {
     public class BookController : Controller
     {
-        private readonly MvcContext _context;
+        private readonly FPTBOOK_STOREIdentityDbContext _context;
          private string Layout ="StoreownerLayout"; 
         private readonly IWebHostEnvironment hostEnvironment;
 
-        public BookController(MvcContext context, IWebHostEnvironment environment)
+        public BookController(FPTBOOK_STOREIdentityDbContext context, IWebHostEnvironment environment)
         {
             _context = context;
 
@@ -29,8 +29,8 @@ namespace FPTBOOK_STORE.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.Layout = Layout;
-            var mvcContext = _context.Book.Include(b => b.Author).Include(b => b.Category).Include(b => b.Publisher);
-            return View(await mvcContext.ToListAsync());
+            var FPTBOOK_STOREIdentityDbContext = _context.Book.Include(b => b.Author).Include(b => b.Category).Include(b => b.Publisher);
+            return View(await FPTBOOK_STOREIdentityDbContext.ToListAsync());
         }
 
         // GET: Book/Details/5
@@ -190,7 +190,7 @@ namespace FPTBOOK_STORE.Controllers
             ViewBag.Layout = Layout;
             if (_context.Book == null)
             {
-                return Problem("Entity set 'MvcContext.Book'  is null.");
+                return Problem("Entity set 'FPTBOOK_STOREIdentityDbContext.Book'  is null.");
             }
             var book = await _context.Book.FindAsync(id);
             if (book != null)
@@ -272,8 +272,8 @@ namespace FPTBOOK_STORE.Controllers
             return RedirectToAction("CheckOut", "Book");
         }
         public async Task<IActionResult> BookHome(){
-            var mvcContext = _context.Book.Include(b => b.Author).Include(b => b.Category).Include(b => b.Publisher);
-            return View(await mvcContext.ToListAsync());
+            var FPTBOOK_STOREIdentityDbContext = _context.Book.Include(b => b.Author).Include(b => b.Category).Include(b => b.Publisher);
+            return View(await FPTBOOK_STOREIdentityDbContext.ToListAsync());
         }
         public async Task<IActionResult> ContactUs(){
             return View();
