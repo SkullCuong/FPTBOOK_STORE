@@ -17,6 +17,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Name)
                         </th>
+                        <th>Status</th>
                         <th>Option</th>
                     </tr>
                 </thead>
@@ -27,6 +28,18 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Name)
                             </td>
+                            @if (item.Status == 0)
+                            {
+                                <td><span class="badge bg-warning">In progress</span></td>
+                            }
+                            else if (item.Status == 1)
+                            {
+                                <td><span class="badge bg-success">Accept</span></td>
+                            }
+                            else
+                            {
+                                <td><span class="badge bg-danger">Reject</span></td>
+                            }
                             <td>
                                 <a asp-action="EditAdmin" asp-route-id="@item.Id" class="btn btn-success"
                                 style="font-size:7px ;"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
@@ -40,4 +53,3 @@
         </div>
     </div>
 </div>
-
