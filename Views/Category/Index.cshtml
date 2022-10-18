@@ -1,5 +1,17 @@
 @model IEnumerable<FPTBOOK_STORE.Models.Category>
-
+@using FPTBOOK_STORE.Controllers
+@{
+    String[] Status = new String[]{
+"warning",
+"success",
+"danger",
+};
+     String[] Status_Name = new String[]{
+"In Process",
+"Accept",
+"Reject",
+};
+}
 <title>Category List</title>
 <div class="row">
     <div class="col-12 col-lg-10 col-xxl-12 d-flex">
@@ -8,8 +20,8 @@
 
                 <h5 class="card-title mb-0">Category List</h5>
             </div>
-             <div class="card-header" >
-               <a asp-action="Create" class="btn btn-primary"><i class="fa-sharp fa-solid fa-plus"></i></a>
+            <div class="card-header">
+                <a asp-action="Create" class="btn btn-primary"><i class="fa-sharp fa-solid fa-plus"></i></a>
             </div>
             <table class="table table-hover my-0" style="margin-left:10px ;">
                 <thead>
@@ -30,15 +42,8 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Name)
                             </td>
-                            @if(item.Status == 0){
-                                <td><span class="badge bg-warning">In progress</span></td>
-                            }
-                            else if( item.Status == 1){
-                                <td><span class="badge bg-success">Accept</span></td>
-                            }
-                            else{
-                                <td><span class="badge bg-danger">Reject</span></td>
-                            }
+
+                            <td><span class="badge bg-@Status[item.Status]">@Status_Name[item.Status]</span></td>
                             <td>
                                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success"
                                 style="font-size:7px ;"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
@@ -52,4 +57,3 @@
         </div>
     </div>
 </div>
-

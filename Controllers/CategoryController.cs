@@ -8,12 +8,14 @@ using Microsoft.EntityFrameworkCore;
 using FPTBOOK_STORE.Models;
 using FPTBOOK_STORE.Areas.Identity.Data;
 namespace FPTBOOK_STORE.Controllers
-{
+{   
     public class CategoryController : Controller
-    {
+    {      
+      
         private readonly FPTBOOK_STOREIdentityDbContext _context;
         private string Layout = "StoreownerLayout";
         private string _Layout = "AdminLayout";
+        
         public CategoryController(FPTBOOK_STOREIdentityDbContext context)
         {
             _context = context;
@@ -85,6 +87,8 @@ namespace FPTBOOK_STORE.Controllers
             {
                 return NotFound();
             }
+
+
             return View(category);
         }
 
