@@ -1,4 +1,5 @@
 @model IEnumerable<FPTBOOK_STORE.Models.Order>
+
 <title>Order List</title>
 <div class="row">
     <div class="col-12 col-lg-10 col-xxl-12 d-flex">
@@ -19,13 +20,13 @@
                         <th>
                             Status
                         </th>
-
                         <th>Option</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
-                    {
+                    {   
+
                         <tr>
                             <td>@Html.DisplayFor(modelItem => item.User.Name)</td>
                             <td>
