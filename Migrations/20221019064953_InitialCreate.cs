@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FPTBOOK_STORE.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -221,6 +221,7 @@ namespace FPTBOOK_STORE.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UploadImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AuthorID = table.Column<int>(type: "int", nullable: false),
                     CategoryID = table.Column<int>(type: "int", nullable: false),

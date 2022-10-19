@@ -4,6 +4,7 @@ public class Book{
     public int Id { get; set; }
     public string? Name { get; set; }
     public double Price { get; set; }
+    public string Description { get; set; }
 
     [DataType(DataType.ImageUrl)]
     public string? UploadImage { get; set; }

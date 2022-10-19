@@ -52,6 +52,10 @@ namespace FPTBOOK_STORE.Migrations
                     b.Property<int>("CategoryID")
                         .HasColumnType("int");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 

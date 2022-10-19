@@ -1,14 +1,19 @@
 
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Zay Shop eCommerce HTML CSS Template</title>
+    <title>FPTBook Store</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="~/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="~/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="~/uploads/shopping-cart.png">
 
     <link rel="stylesheet" href="~/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/templatemo.css">
@@ -35,23 +40,36 @@
                     <a href="/" class = "header_navitem" style ="text-decoration: none;">Home</a>
                     <a href="#" class = "header_navitem" style ="text-decoration: none;">Our Service</a>
                     <div class ="header_navitem header_navitem_more">
-                        <p style = "display: block; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px;   margin-inline-end: 0px;">Support</p>
+                        <p style = "display: block; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px;   margin-inline-end: 0px;">More</p>
                         <ul class ="header_navitem_sublist" >
-                            <li> <a href="" class = "header_navlink" style ="text-decoration: none">More</a> </li>
+                            <li> <a asp-controller = "Book" asp-action ="Support" class = "header_navlink" style ="text-decoration: none;">Support</a> </li>
                             <li> <a asp-controller = "Book" asp-action ="About" class = "header_navlink" style ="text-decoration: none;">About Us</a> </li>
                             <li> <a asp-controller = "Book" asp-action ="ContactUs" class = "header_navlink" style ="text-decoration: none;">Contact Us</a> </li>
-                            <li> <a asp-controller = "Book" asp-action ="Support" class = "header_navlink" style ="text-decoration: none;">Q&A</a> </li>
+                            <li> <a asp-controller = "Book" asp-action ="QandA" class = "header_navlink" style ="text-decoration: none;">Q&A</a> </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class ="header_login">
                  <a href="Book/Checkout"class = "header_navitem" style ="text-decoration: none;"><i class="fa-solid fa-cart-shopping" style = "margin: 10px"></i> Your Cart</a>
-                 <div class ="header_navitem header_navitem_more">
-                <i class="fa-solid fa-user" style = "margin: 10px"></i>
-                <p style = "display: block; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px;   margin-inline-end: 0px;">Account</p>
-                <partial name="_LoginPartial" />
-            </div>               
+                 @if (SignInManager.IsSignedIn(User))
+                {   
+                    <div class ="header_navitem header_navitem_more">
+                        <p style = "display: block; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px;   margin-inline-end: 0px;">Hello @UserManager.GetUserName(User)!</p>
+                        <ul class ="header_navitem_sublist">
+                            <li> <a id="manage" class="header_navlink" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style ="text-decoration: none;">Profile</a></li>
+                            <li> <form id="logoutForm" class="header_navlink" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("", "", new { area = "" })">
+                                 <button id="logout" type="submit" class="header_navlink" style ="text-decoration: none; background-color: #272626; margin-right: 40px; color: white">Logout</button>
+                                 </form>
+                            </li>
+                        </ul>
+                    </div>       
+                }
+                else
+                {   
+                    <a class="header_navitem" id="login" asp-area="Identity" asp-page="/Account/Login" style ="text-decoration: none;">Login</a>
+                    <a class="header_navitem" id="register" asp-area="Identity" asp-page="/Account/Register" style ="text-decoration: none;">Register</a>
+                }       
             </div>
         </div>
     <!-- Close Header -->

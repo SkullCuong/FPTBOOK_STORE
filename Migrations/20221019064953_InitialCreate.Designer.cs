@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FPTBOOK_STORE.Migrations
 {
     [DbContext(typeof(FPTBOOK_STOREIdentityDbContext))]
-    [Migration("20221016104631_CreateIdentitySchema")]
-    partial class CreateIdentitySchema
+    [Migration("20221019064953_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,6 +53,10 @@ namespace FPTBOOK_STORE.Migrations
 
                     b.Property<int>("CategoryID")
                         .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
