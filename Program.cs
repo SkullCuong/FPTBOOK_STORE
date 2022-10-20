@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<FPTBOOK_STOREIdentityDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("FPTBOOK_STOREIdentityDbContextConnection") ?? throw new InvalidOperationException("Connection string 'FPTBOOK_STOREIdentityDbContextConnection' not found.")));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<FPTBOOKUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<FPTBOOK_STOREIdentityDbContext>();
 
 // Add services to the container.

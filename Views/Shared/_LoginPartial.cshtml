@@ -1,7 +1,7 @@
-@* @using Microsoft.AspNetCore.Identity
-
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@using Microsoft.AspNetCore.Identity
+@using FPTBOOK_STORE.Areas.Identity.Data
+@inject SignInManager<FPTBOOKUser> SignInManager
+@inject UserManager<FPTBOOKUser> UserManager
 
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
@@ -24,4 +24,4 @@ else
         <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
     </li>
 }
-</ul> *@
+</ul>

@@ -1,15 +1,17 @@
+using FPTBOOK_STORE.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace FPTBOOK_STORE.Areas.Identity.Data;
 
-public class FPTBOOK_STOREIdentityDbContext : IdentityDbContext<IdentityUser>
+public class FPTBOOK_STOREIdentityDbContext : IdentityDbContext<FPTBOOKUser>
 {
     public FPTBOOK_STOREIdentityDbContext(DbContextOptions<FPTBOOK_STOREIdentityDbContext> options)
         : base(options)
     {
     }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
