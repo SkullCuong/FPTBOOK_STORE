@@ -8,8 +8,8 @@
 
                 <h5 class="card-title mb-0">Book List</h5>
             </div>
-            <div class="card-header" >
-               <a asp-action="Create" class="btn btn-primary"><i class="fa-sharp fa-solid fa-plus"></i></a>
+            <div class="card-header">
+                <a asp-action="Create" class="btn btn-primary"><i class="fa-sharp fa-solid fa-plus"></i></a>
             </div>
             <table class="table table-hover my-0" style="margin-left:10px ;">
                 <thead>
@@ -32,6 +32,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Publisher)
                         </th>
+                        <th>@Html.DisplayNameFor(model => model.Description)</th>
                         <th>Option</th>
                     </tr>
                 </thead>
@@ -58,10 +59,12 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Publisher.Name)
                             </td>
+                            <td style="max-width:100px;white-space: nowrap; overflow: hidden;text-overflow: ellipsis">
+                                @item.Description</td>
                             <td>
                                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success"
                                 style="font-size:7px ;"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
-                                <a asp-action="Delete" asp-route-id="@item.Id"  class="btn btn-danger"
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"
                                 style="font-size:7px"><i class="fa-sharp fa-solid fa-trash"></i></a>
                             </td>
                         </tr>

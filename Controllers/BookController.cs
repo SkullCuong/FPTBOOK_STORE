@@ -116,6 +116,8 @@ namespace FPTBOOK_STORE.Controllers
                 return NotFound();
             }
             var data = _context.Category.Where(m => m.Status == 1);
+            String image = book.UploadImage.ToString();
+            ViewBag.image = image;
             ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name", book.AuthorID);
             ViewData["CategoryID"] = new SelectList(data, "Id", "Name", book.CategoryID);
             ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name", book.PublisherID);
@@ -127,9 +129,10 @@ namespace FPTBOOK_STORE.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,UploadImage,AuthorID,CategoryID,PublisherID")] Book book)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,UploadImage,AuthorID,CategoryID,PublisherID,Description")] Book book)
         {
             ViewBag.Layout = Layout;
+           
             if (id != book.Id)
             {
                 return NotFound();
