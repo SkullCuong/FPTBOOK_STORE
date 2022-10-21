@@ -1,8 +1,8 @@
 
 @using Microsoft.AspNetCore.Identity
-
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@using FPTBOOK_STORE.Areas.Identity.Data
+@inject SignInManager<FPTBOOKUser> SignInManager
+@inject UserManager<FPTBOOKUser> UserManager
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="~/css/custom.css">
     <link rel="stylesheet" href="~/css/Nav.css">
     <link rel="stylesheet" href="~/css/Footer.css">
+    <link rel="stylesheet" href="~/css/search.css">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">

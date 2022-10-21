@@ -70,7 +70,7 @@ namespace FPTBOOK_STORE.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Price,UploadImage,AuthorID,CategoryID,PublisherID")] Book book, IFormFile myfile)
+        public async Task<IActionResult> Create([Bind("Id,Name,Price,UploadImage,AuthorID,CategoryID,PublisherID,Description")] Book book, IFormFile myfile)
         {
             ViewBag.Layout = Layout;
             if (ModelState.IsValid)
@@ -271,9 +271,28 @@ namespace FPTBOOK_STORE.Controllers
             
             return RedirectToAction("CheckOut", "Book");
         }
-        public async Task<IActionResult> BookHome(){
-            var FPTBOOK_STOREIdentityDbContext = _context.Book.Include(b => b.Author).Include(b => b.Category).Include(b => b.Publisher);
-            return View(await FPTBOOK_STOREIdentityDbContext.ToListAsync());
+        public async Task<IActionResult> BookHome(string bookCategory, string search){
+            IQueryable<string> bookQuery = from m in _context.Book orderby m.Category.Name select m.Category.Name;
+            var books = from m in _context.Book select m;
+            var FPTBOOK_STOREIdentityDbContext = from m in _context.Book.Include(a => a.Author).Include(b => b.Category).Include(c => c.Publisher) select m;
+            
+            if (!string.IsNullOrEmpty(search))
+            {
+                books = books.Where(s => s.Name!.Contains(search));
+            }
+
+            if (!string.IsNullOrEmpty(bookCategory))
+            {
+                books = books.Where(x => x.Category.Name == bookCategory);
+            }
+            
+            var bookcategoryVM = new BookCategoryViewModel
+            {
+                Categories = new SelectList(await bookQuery.Distinct().ToListAsync()),
+                Books = await books.ToListAsync(),       
+            };
+            return View(bookcategoryVM);
+
         }
         public async Task<IActionResult> ContactUs(){
             return View();

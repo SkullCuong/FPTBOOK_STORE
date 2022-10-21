@@ -1206,3 +1206,11 @@ D:\DATA\SCHOOL\1670\asm2code\FPTBOOK_STORE\bin\Debug\net6.0\runtimes\win-x64\nat
 D:\DATA\SCHOOL\1670\asm2code\FPTBOOK_STORE\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
 D:\DATA\SCHOOL\1670\asm2code\FPTBOOK_STORE\bin\Debug\net6.0\runtimes\unix\lib\netstandard2.0\System.Data.SqlClient.dll
 D:\DATA\SCHOOL\1670\asm2code\FPTBOOK_STORE\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Data.SqlClient.dll
+C:\ASM2 Application\FPTBOOK_STORE\bin\Debug\net6.0\EPPlus.Core.dll
+C:\ASM2 Application\FPTBOOK_STORE\bin\Debug\net6.0\System.Data.SqlClient.dll
+C:\ASM2 Application\FPTBOOK_STORE\bin\Debug\net6.0\System.Xml.XPath.XmlDocument.dll
+C:\ASM2 Application\FPTBOOK_STORE\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+C:\ASM2 Application\FPTBOOK_STORE\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+C:\ASM2 Application\FPTBOOK_STORE\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+C:\ASM2 Application\FPTBOOK_STORE\bin\Debug\net6.0\runtimes\unix\lib\netstandard2.0\System.Data.SqlClient.dll
+C:\ASM2 Application\FPTBOOK_STORE\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Data.SqlClient.dll

@@ -1,5 +1,4 @@
-@model IEnumerable<FPTBOOK_STORE.Models.Book>
-
+@model FPTBOOK_STORE.Models.BookCategoryViewModel
 @{
     ViewData["Title"] = "Index";
 }
@@ -84,43 +83,56 @@
     </div>
     <!-- End Banner Hero -->
 
+<form asp-controller="Book" asp-action="BookHome" method="get">
+    <p>
+        <div class="search-box">
+            <select asp-for="BookCategory" asp-items="Model.Categories" class ="search-txt" style ="background-color: #2f3640; color : white; margin-bottom: 5px;">
+            <option value="">Select Category</option>
+            </select>
+
+            <input type="text" class ="search-txt" asp-for="Search"  placeholder = "Type to search">
+            <button class = "search-btn" type = "submit" name = "submit"> <i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+</div>
+    </p>
+</form>
 
 <div>
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-                    <button type="submit" class="input-group-text bg-success text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
     <!-- Start Content -->
     <div class="container py-5" >
         <div class="row">
             <div class="col-lg-3">
-                <h1 class="h2 pb-4">Categories</h1>
+                <h1 class="h2 pb-4">Recommend Categories</h1>
                 <ul class="list-unstyled templatemo-accordion">
-                    <li class="pb-3">
-                        @foreach (var item in Model)
-                            {
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                            @Html.DisplayFor(modelItem => item.Category.Name)
-                            <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
-                        </a>
-                            }
+                    <li class="pb-3">                
+                        <form asp-controller="Book" asp-action="BookHome" method="get">
+                        <p>
+                            <input asp-for="BookCategory" asp-items="Model.Categories" type = "hidden">
+                            <a href="/?BookCategory=Comedy&Search=" style = "text-decoration:none;">Comedy</a>
+                        </p>
+                    </form>
+                    </li>
+                    <li class="pb-3">                
+                        <form asp-controller="Book" asp-action="BookHome" method="get">
+                        <p>
+                            <input asp-for="BookCategory" asp-items="Model.Categories" type = "hidden">
+                            <a href="/?BookCategory=Fantasy&Search=" style = "text-decoration:none;">Fantasy</a>
+                        </p>
+                    </form>
+                    </li>
+                    <li class="pb-3">                
+                        <form asp-controller="Book" asp-action="BookHome" method="get">
+                        <p>
+                            <input asp-for="BookCategory" asp-items="Model.Categories" type = "hidden">
+                            <a href="/?BookCategory=Humor&Search=" style = "text-decoration:none;">Humor</a>
+                        </p>
+                    </form>
                     </li>               
                 </ul>
             </div>
             <div class="col-lg-9">
                 <div class="row" style = "margin-top:50px">
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Books)
                     {
                     <div class="col-md-4">
                         <div class="card mb-4 product-wap rounded-0">
@@ -133,9 +145,8 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Name: @Html.DisplayFor(modelItem => item.Name)</a>
+                                <p class="text-center mb-0" style="margin-top: 10px">@Html.DisplayFor(modelItem => item.Name)</p>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>Author: @Html.DisplayFor(modelItem => item.Author.Name)</li>
                                 </ul>
                                 <p class="text-center mb-0" style="margin-top: 10px"> <strong>$@(item.Price * 1.1)</strong></p>
                             </div>

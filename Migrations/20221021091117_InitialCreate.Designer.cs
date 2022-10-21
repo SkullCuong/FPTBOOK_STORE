@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FPTBOOK_STORE.Migrations
 {
     [DbContext(typeof(FPTBOOK_STOREIdentityDbContext))]
-    [Migration("20221020140600_CreateIdentitySchema")]
-    partial class CreateIdentitySchema
+    [Migration("20221021091117_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
