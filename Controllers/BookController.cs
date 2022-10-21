@@ -14,7 +14,7 @@ namespace FPTBOOK_STORE.Controllers
     public class BookController : Controller
     {
         private readonly FPTBOOK_STOREIdentityDbContext _context;
-         private string Layout ="StoreownerLayout"; 
+        private string Layout = "StoreownerLayout";
         private readonly IWebHostEnvironment hostEnvironment;
 
         public BookController(FPTBOOK_STOREIdentityDbContext context, IWebHostEnvironment environment)
@@ -23,7 +23,7 @@ namespace FPTBOOK_STORE.Controllers
 
             hostEnvironment = environment;
         }
-        
+
 
         // GET: Book
         public async Task<IActionResult> Index()
@@ -58,7 +58,7 @@ namespace FPTBOOK_STORE.Controllers
         public IActionResult Create()
         {
             ViewBag.Layout = Layout;
-            var data =  _context.Category.Where(m => m.Status == 1);
+            var data = _context.Category.Where(m => m.Status == 1);
             ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name");
             ViewData["CategoryID"] = new SelectList(data, "Id", "Name");
             ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name");
@@ -73,9 +73,20 @@ namespace FPTBOOK_STORE.Controllers
         public async Task<IActionResult> Create([Bind("Id,Name,Price,UploadImage,AuthorID,CategoryID,PublisherID,Description")] Book book, IFormFile myfile)
         {
             ViewBag.Layout = Layout;
+
             if (ModelState.IsValid)
             {
                 string filename = Path.GetFileName(myfile.FileName);
+                string extensions = Path.GetExtension(filename);
+                if (extensions != ".png" && extensions !=".jpg")
+                {
+                    var data = _context.Category.Where(m => m.Status == 1);
+                    ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name", book.AuthorID);
+                    ViewData["CategoryID"] = new SelectList(data, "Id", "Name", book.CategoryID);
+                    ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name", book.PublisherID);
+                    ModelState.AddModelError("CheckFile", "File name with extention png,jpg or not empty !");
+                    return View();
+                }
                 var filePath = Path.Combine(hostEnvironment.WebRootPath, "uploads");
                 string fullPath = filePath + "\\" + filename;
                 using (var stream = new FileStream(fullPath, FileMode.Create))
@@ -87,14 +98,6 @@ namespace FPTBOOK_STORE.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            var data = _context.Category;
-            foreach(var item in data){
-                Console.WriteLine(item.Name);
-            }
-            
-            ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name", book.AuthorID);
-            ViewData["CategoryID"] = new SelectList(_context.Category, "Id", "Name",book.AuthorID);
-            ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name", book.PublisherID);
             return View(book);
         }
 
@@ -112,7 +115,9 @@ namespace FPTBOOK_STORE.Controllers
             {
                 return NotFound();
             }
-            var data =  _context.Category.Where(m => m.Status == 1);
+            var data = _context.Category.Where(m => m.Status == 1);
+            String image = book.UploadImage.ToString();
+            ViewBag.image = image;
             ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name", book.AuthorID);
             ViewData["CategoryID"] = new SelectList(data, "Id", "Name", book.CategoryID);
             ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name", book.PublisherID);
@@ -124,9 +129,10 @@ namespace FPTBOOK_STORE.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,UploadImage,AuthorID,CategoryID,PublisherID")] Book book)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,UploadImage,AuthorID,CategoryID,PublisherID,Description")] Book book)
         {
             ViewBag.Layout = Layout;
+           
             if (id != book.Id)
             {
                 return NotFound();
@@ -152,7 +158,7 @@ namespace FPTBOOK_STORE.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            
+
             ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name", book.AuthorID);
             ViewData["CategoryID"] = new SelectList(_context.Category, "Id", "Name", book.CategoryID);
             ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name", book.PublisherID);
@@ -161,7 +167,7 @@ namespace FPTBOOK_STORE.Controllers
 
         // GET: Book/Delete/5
         public async Task<IActionResult> Delete(int? id)
-        {   
+        {
             Console.WriteLine(id);
             ViewBag.Layout = Layout;
             if (id == null || _context.Book == null)
@@ -197,78 +203,79 @@ namespace FPTBOOK_STORE.Controllers
             {
                 _context.Book.Remove(book);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool BookExists(int id)
         {
-          ViewBag.Layout = Layout;
-          return (_context.Book?.Any(e => e.Id == id)).GetValueOrDefault();
+            ViewBag.Layout = Layout;
+            return (_context.Book?.Any(e => e.Id == id)).GetValueOrDefault();
         }
         [HttpPost]
-        public IActionResult AddToCart(int id,string name,double price,int quantity)
+        public IActionResult AddToCart(int id, string name, double price, int quantity)
         {
-           ShoppingCart myCart;
+            ShoppingCart myCart;
 
-        if (HttpContext.Session.GetObject<ShoppingCart>("cart") == null) {
-            myCart = new ShoppingCart();
-            HttpContext.Session.SetObject("cart",myCart);
-        } 
-        myCart= (ShoppingCart)HttpContext.Session.GetObject<ShoppingCart>("cart");
-        var newItem=myCart.AddItem(id,name,price,quantity);
-        HttpContext.Session.SetObject("cart",myCart);
-        ViewData["newItem"]=newItem;
-        return View();
+            if (HttpContext.Session.GetObject<ShoppingCart>("cart") == null)
+            {
+                myCart = new ShoppingCart();
+                HttpContext.Session.SetObject("cart", myCart);
+            }
+            myCart = (ShoppingCart)HttpContext.Session.GetObject<ShoppingCart>("cart");
+            var newItem = myCart.AddItem(id, name, price, quantity);
+            HttpContext.Session.SetObject("cart", myCart);
+            ViewData["newItem"] = newItem;
+            return View();
         }
         public IActionResult CheckOut()
-        {            
-            ShoppingCart cart=(ShoppingCart) HttpContext.Session.GetObject<ShoppingCart>("cart");
-            ViewData["myItems"]=cart.Items;
+        {
+            ShoppingCart cart = (ShoppingCart)HttpContext.Session.GetObject<ShoppingCart>("cart");
+            ViewData["myItems"] = cart.Items;
             return View();
         }
         public IActionResult PlaceOrder(decimal total)
-        {            
-            ShoppingCart cart=(ShoppingCart) HttpContext.Session.GetObject<ShoppingCart>("cart");
-            Order myOrder=new Order();
-            myOrder.OrderDate=DateTime.Now;
-            myOrder.Status=0;
+        {
+            ShoppingCart cart = (ShoppingCart)HttpContext.Session.GetObject<ShoppingCart>("cart");
+            Order myOrder = new Order();
+            myOrder.OrderDate = DateTime.Now;
+            myOrder.Status = 0;
             // myOrder.User =;
             _context.Order.Add(myOrder);
             _context.SaveChanges();//this generates the Id for Order
-           
-            foreach(var item in cart.Items)
+
+            foreach (var item in cart.Items)
             {
-                OrderDetail myOrderItem=new OrderDetail();
-                myOrderItem.BookID=item.Id;
-                myOrderItem.Quantity=item.Quantity;
-                myOrderItem.OrderID=myOrder.Id;//id of saved order above
-                
+                OrderDetail myOrderItem = new OrderDetail();
+                myOrderItem.BookID = item.Id;
+                myOrderItem.Quantity = item.Quantity;
+                myOrderItem.OrderID = myOrder.Id;//id of saved order above
+
                 _context.OrderDetail.Add(myOrderItem);
             }
             _context.SaveChanges();
             //empty shopping cart
-            cart=new ShoppingCart();
-            HttpContext.Session.SetObject("cart",cart);
+            cart = new ShoppingCart();
+            HttpContext.Session.SetObject("cart", cart);
             return View();
         }
         [HttpPost]
-        public RedirectToActionResult EditOrder(int id,int quantity)
+        public RedirectToActionResult EditOrder(int id, int quantity)
         {
-            ShoppingCart cart=(ShoppingCart) HttpContext.Session.GetObject<ShoppingCart>("cart");
-            cart.EditItem(id,quantity);
-            HttpContext.Session.SetObject("cart",cart);
-            
+            ShoppingCart cart = (ShoppingCart)HttpContext.Session.GetObject<ShoppingCart>("cart");
+            cart.EditItem(id, quantity);
+            HttpContext.Session.SetObject("cart", cart);
+
             return RedirectToAction("CheckOut", "Book");
         }
         [HttpPost]
         public RedirectToActionResult RemoveOrderItem(int id)
         {
-            ShoppingCart cart=(ShoppingCart) HttpContext.Session.GetObject<ShoppingCart>("cart");
+            ShoppingCart cart = (ShoppingCart)HttpContext.Session.GetObject<ShoppingCart>("cart");
             cart.RemoveItem(id);
-            HttpContext.Session.SetObject("cart",cart);
-            
+            HttpContext.Session.SetObject("cart", cart);
+
             return RedirectToAction("CheckOut", "Book");
         }
         public async Task<IActionResult> BookHome(string bookCategory, string search){
@@ -294,10 +301,12 @@ namespace FPTBOOK_STORE.Controllers
             return View(bookcategoryVM);
 
         }
-        public async Task<IActionResult> ContactUs(){
+        public async Task<IActionResult> ContactUs()
+        {
             return View();
         }
-        public IActionResult Chart(){
+        public IActionResult Chart()
+        {
             ViewBag.Layout = Layout;
             return View();
         }
