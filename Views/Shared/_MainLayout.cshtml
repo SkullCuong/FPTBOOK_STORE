@@ -1,4 +1,4 @@
-
+@model FPTBOOK_STORE.Models.BookCategoryViewModel
 @using Microsoft.AspNetCore.Identity
 @using FPTBOOK_STORE.Areas.Identity.Data
 @inject SignInManager<FPTBOOKUser> SignInManager
@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="~/css/Nav.css">
     <link rel="stylesheet" href="~/css/Footer.css">
     <link rel="stylesheet" href="~/css/search.css">
+    <link rel="stylesheet" href="~/css/Support.css">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
@@ -43,10 +44,9 @@
                     <div class ="header_navitem header_navitem_more">
                         <p style = "display: block; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px;   margin-inline-end: 0px;">More</p>
                         <ul class ="header_navitem_sublist" >
-                            <li> <a asp-controller = "Book" asp-action ="Support" class = "header_navlink" style ="text-decoration: none;">Support</a> </li>
                             <li> <a asp-controller = "Book" asp-action ="About" class = "header_navlink" style ="text-decoration: none;">About Us</a> </li>
                             <li> <a asp-controller = "Book" asp-action ="ContactUs" class = "header_navlink" style ="text-decoration: none;">Contact Us</a> </li>
-                            <li> <a asp-controller = "Book" asp-action ="QandA" class = "header_navlink" style ="text-decoration: none;">Q&A</a> </li>
+                            <li> <a asp-controller = "Book" asp-action ="Support" class = "header_navlink" style ="text-decoration: none;">Support</a> </li>
                         </ul>
                     </div>
                 </div>
@@ -120,28 +120,48 @@
                     <div class ="footer-col">
                     <h4>My Shop</h4>
                     <ul class ="ul">
-                        <li><a href ="{{ asset('/about')}}">About us</a></li>
-                        <li><a href ="{{ asset('/contact')}}">Our Service</a></li>
-                        <li><a href ="{{ asset('/privacy')}}">Privacy policy</a></li>
-                        <li><a href ="{{ asset('/event_dessert')}}">Events program</a></li>
+                        <li><a asp-controller = "Book" asp-action ="Service">Our Services</a></li>
+                        <li><a asp-controller = "Book" asp-action ="About">About Us</a></li>
+                        <li><a asp-controller = "Book" asp-action ="Contactus">Contact Us</a></li>
+                        <li><a asp-controller = "Book" asp-action ="Support">Support</a></li>
                     </ul>
                 </div>
                 <div class ="footer-col">
                     <h4>Get Help</h4>
                     <ul class ="ul">
-                        <li><a href ="{{ asset('/FAQ')}}">FAQ</a></li>
-                        <li><a href ="#">Shipping</a></li>
-                        <li><a href ="#">Order status</a></li>
-                        <li><a href ="#">Payment options</a></li>
+                        <li><a asp-controller = "Book" asp-action ="Support">Support</a></li>
+                        <li><a asp-controller = "Book" asp-action ="Support">Shipping & Delivery</a></li>
+                        <li><a asp-controller = "Book" asp-action ="Support">Order</a></li>
+                        <li><a asp-controller = "Book" asp-action ="Support">Company Info</a></li>
                     </ul>
                 </div>
                 <div class ="footer-col">
                     <h4>Best Seller</h4>
                     <ul class ="ul">
-                        <li><a href ="#">Filter coffee</a></li>
-                        <li><a href ="#">Coffee</a></li>
-                        <li><a href ="#">Dessert</a></li>
-                        <li><a href ="#">IceCream</a></li>
+                        <li>
+                            <form asp-controller="Book" asp-action="BookHome" method="get">
+                            <input asp-for="BookCategory" asp-items="Model.Categories" type = "hidden">
+                            <a href="/?BookCategory=Fantasy&Search=">Fantasy</a>
+                        </form>
+                        </li>
+                        <li>
+                            <form asp-controller="Book" asp-action="BookHome" method="get">
+                            <input asp-for="BookCategory" asp-items="Model.Categories" type = "hidden">
+                            <a href="/?BookCategory=Action&Search=">Action</a>
+                        </form>
+                        </li>
+                        <li>
+                            <form asp-controller="Book" asp-action="BookHome" method="get">
+                            <input asp-for="BookCategory" asp-items="Model.Categories" type = "hidden">
+                            <a href="/?BookCategory=Comedy&Search=">Comedy</a>
+                        </form>
+                        </li>
+                        <li>
+                            <form asp-controller="Book" asp-action="BookHome" method="get">
+                            <input asp-for="BookCategory" asp-items="Model.Categories" type = "hidden">
+                            <a href="/?BookCategory=Humor&Search=">Humor</a>
+                        </form>
+                        </li>
                     </ul>
                 </div>
                 <div class ="footer-col">

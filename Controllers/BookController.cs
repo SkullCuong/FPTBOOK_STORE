@@ -305,6 +305,14 @@ namespace FPTBOOK_STORE.Controllers
         {
             return View();
         }
+        public async Task<IActionResult> About()
+        {
+            return View();
+        }
+        public async Task<IActionResult> Support()
+        {
+            return View();
+        }
         public IActionResult Chart()
         {
             ViewBag.Layout = Layout;
