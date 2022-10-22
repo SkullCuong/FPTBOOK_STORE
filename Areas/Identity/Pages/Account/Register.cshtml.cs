@@ -71,10 +71,21 @@ namespace FPTBOOK_STORE.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Full name")]
+            public string Name { get; set; }
+            
+
+            [Required]
+            [Display(Name = "Birth Date")]
+            [DataType(DataType.DateTime)]
+            public DateTime DOB { get; set; }
+            
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Address")]
+            public string Address { get; set; }
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -159,7 +170,11 @@ namespace FPTBOOK_STORE.Areas.Identity.Pages.Account
         {
             try
             {
-                return Activator.CreateInstance<FPTBOOKUser>();
+                FPTBOOKUser user = Activator.CreateInstance<FPTBOOKUser>();
+                user.Name = Input.Name;
+                user.DOB = Input.DOB;
+                user.Address = Input.Address;
+                return user;
             }
             catch
             {

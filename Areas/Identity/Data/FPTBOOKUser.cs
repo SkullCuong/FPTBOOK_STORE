@@ -9,11 +9,8 @@ namespace FPTBOOK_STORE.Areas.Identity.Data;
 // Add profile data for application users by adding properties to the FPTBOOKUser class
 public class FPTBOOKUser : IdentityUser
 {
-    public string Email {get;set;}
-
     public string Name { get; set; }
     public DateTime DOB { get; set; }
     public string Address {get;set;}
-    public string Phone {get;set;}
 }
 
