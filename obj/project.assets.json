@@ -11468,24 +11468,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\minh dan\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\GF63\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\DATA\\SCHOOL\\1670\\asm2code\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj",
+      "projectUniqueName": "C:\\ASM2 Application\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj",
       "projectName": "FPTBOOK_STORE",
-      "projectPath": "D:\\DATA\\SCHOOL\\1670\\asm2code\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj",
-      "packagesPath": "C:\\Users\\minh dan\\.nuget\\packages\\",
-      "outputPath": "D:\\DATA\\SCHOOL\\1670\\asm2code\\FPTBOOK_STORE\\obj\\",
+      "projectPath": "C:\\ASM2 Application\\FPTBOOK_STORE\\FPTBOOK_STORE.csproj",
+      "packagesPath": "C:\\Users\\GF63\\.nuget\\packages\\",
+      "outputPath": "C:\\ASM2 Application\\FPTBOOK_STORE\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\minh dan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\GF63\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11567,7 +11562,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -230,10 +230,15 @@ namespace FPTBOOK_STORE.Controllers
             return View();
         }
         public IActionResult CheckOut()
-        {
+        {   
+            try{
             ShoppingCart cart = (ShoppingCart)HttpContext.Session.GetObject<ShoppingCart>("cart");
             ViewData["myItems"] = cart.Items;
             return View();
+            }catch{
+                
+                return RedirectToAction("", "Book");
+            }
         }
         public IActionResult PlaceOrder(decimal total)
         {
