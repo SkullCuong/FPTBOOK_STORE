@@ -39,7 +39,7 @@ List<CartItem> myItems=(List<CartItem>)ViewData["myItems"];
         <td>@total</td>
     </tr>
 </table>
-<form asp-action="PlaceOrder" method="post" style = "margin-bottom:150px">
+<form asp-action="PlaceOrder" asp-controller = "Order" method="post" style = "margin-bottom:150px">
         <input type="hidden" name="total" value="@total"/>        
         <input type="submit" value="Order" class="btn btn-primary"/>    
 </form>

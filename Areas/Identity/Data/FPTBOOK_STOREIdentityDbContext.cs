@@ -30,7 +30,6 @@ public class FPTBOOK_STOREIdentityDbContext : IdentityDbContext<FPTBOOKUser>
 
     public DbSet<FPTBOOK_STORE.Models.Book>? Book { get; set; }
 
-    public DbSet<FPTBOOK_STORE.Models.User>? User { get; set; }
 
     public DbSet<FPTBOOK_STORE.Models.Order>? Order { get; set; }
 

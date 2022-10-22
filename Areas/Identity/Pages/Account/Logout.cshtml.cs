@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using FPTBOOK_STORE.Utils;
 
 namespace FPTBOOK_STORE.Areas.Identity.Pages.Account
 {
@@ -28,6 +29,11 @@ namespace FPTBOOK_STORE.Areas.Identity.Pages.Account
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
+
+            ShoppingCart cart = (ShoppingCart)HttpContext.Session.GetObject<ShoppingCart>("cart");
+            cart = new ShoppingCart();
+            HttpContext.Session.SetObject("cart", cart);
+
             if (returnUrl != null)
             {
                 return LocalRedirect(returnUrl);

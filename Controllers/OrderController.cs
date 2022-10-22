@@ -6,164 +6,55 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FPTBOOK_STORE.Models;
+using FPTBOOK_STORE.Utils;
 using FPTBOOK_STORE.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
+
 namespace FPTBOOK_STORE.Controllers
 {
     public class OrderController : Controller
     {   
         private string Layout ="StoreownerLayout"; 
+        private readonly UserManager<FPTBOOKUser> _userManager;
         private readonly FPTBOOK_STOREIdentityDbContext _context;
+        private readonly IWebHostEnvironment hostEnvironment;
 
-        public OrderController(FPTBOOK_STOREIdentityDbContext context)
+        public OrderController(FPTBOOK_STOREIdentityDbContext context, UserManager<FPTBOOKUser> userManager,   IWebHostEnvironment environment)
         {
             _context = context;
+            _userManager = userManager;
+            hostEnvironment = environment;
         }
-
-        // GET: Order
-        public async Task<IActionResult> Index()
-        {   
-            ViewBag.Layout = Layout;
-            var FPTBOOK_STOREIdentityDbContext = _context.Order.Include(o => o.User);
-            return View(await FPTBOOK_STOREIdentityDbContext.ToListAsync());
-        }
-
-        // GET: Order/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult PlaceOrder(decimal total)
         {
-            if (id == null || _context.Order == null)
-            {
-                return NotFound();
-            }
-
-            var order = await _context.Order
-                .Include(o => o.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (order == null)
-            {
-                return NotFound();
-            }
-
-            return View(order);
-        }
-
-        // GET: Order/Create
-        public IActionResult Create(int id)
-        {
-            ViewData["UserID"] = new SelectList(_context.User, "Id", "Name");
-            return View();
-        }
-
-        // POST: Order/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,OrderDate,Status,UserID")] Order order)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(order);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["UserID"] = new SelectList(_context.User, "Id", "Id", order.UserID);
-            return View(order);
-        }
-
-        // GET: Order/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Order == null)
-            {
-                return NotFound();
-            }
-
-            var order = await _context.Order.FindAsync(id);
-            if (order == null)
-            {
-                return NotFound();
-            }
-            ViewData["UserID"] = new SelectList(_context.User, "Id", "Id", order.UserID);
-            return View(order);
-        }
-
-        // POST: Order/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,OrderDate,Status,UserID")] Order order)
-        {
-            if (id != order.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(order);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!OrderExists(order.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["UserID"] = new SelectList(_context.User, "Id", "Id", order.UserID);
-            return View(order);
-        }
-
-        // GET: Order/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Order == null)
-            {
-                return NotFound();
-            }
-
-            var order = await _context.Order
-                .Include(o => o.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (order == null)
-            {
-                return NotFound();
-            }
-
-            return View(order);
-        }
-
-        // POST: Order/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Order == null)
-            {
-                return Problem("Entity set 'FPTBOOK_STOREIdentityDbContext.Order'  is null.");
-            }
-            var order = await _context.Order.FindAsync(id);
-            if (order != null)
-            {
-                _context.Order.Remove(order);
-            }
+            ShoppingCart cart = (ShoppingCart)HttpContext.Session.GetObject<ShoppingCart>("cart");
+            Order myOrder = new Order();
+            myOrder.OrderDate = DateTime.Now;
+            myOrder.Status = 0;
+            var userID = _userManager.GetUserId(HttpContext.User);
+            FPTBOOKUser user = _userManager.FindByIdAsync(userID).Result;
+            // if(user == null){
+            //     return View("Book");
+            // }
+            myOrder.FPTBOOKUserId = user.Id;
             
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+            _context.Order.Add(myOrder);
+            _context.SaveChanges();//this generates the Id for Order
 
-        private bool OrderExists(int id)
-        {
-          return (_context.Order?.Any(e => e.Id == id)).GetValueOrDefault();
+            foreach (var item in cart.Items)
+            {
+                OrderDetail myOrderItem = new OrderDetail();
+                myOrderItem.BookID = item.Id;
+                myOrderItem.Quantity = item.Quantity;
+                myOrderItem.OrderID = myOrder.Id;//id of saved order above
+
+                _context.OrderDetail.Add(myOrderItem);
+            }
+            _context.SaveChanges();
+            //empty shopping cart
+            cart = new ShoppingCart();
+            HttpContext.Session.SetObject("cart", cart);
+            return RedirectToAction("BookHome", "Book");
         }
     }
 }

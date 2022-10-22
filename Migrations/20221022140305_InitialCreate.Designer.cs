@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FPTBOOK_STORE.Migrations
 {
     [DbContext(typeof(FPTBOOK_STOREIdentityDbContext))]
-    [Migration("20221022090101_InitialCreate")]
+    [Migration("20221022140305_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -189,18 +189,18 @@ namespace FPTBOOK_STORE.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("FPTBOOKUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("FPTBOOKUserId");
 
                     b.ToTable("Order");
                 });
@@ -246,40 +246,6 @@ namespace FPTBOOK_STORE.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Publisher");
-                });
-
-            modelBuilder.Entity("FPTBOOK_STORE.Models.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("BirthDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Gmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -448,13 +414,11 @@ namespace FPTBOOK_STORE.Migrations
 
             modelBuilder.Entity("FPTBOOK_STORE.Models.Order", b =>
                 {
-                    b.HasOne("FPTBOOK_STORE.Models.User", "User")
+                    b.HasOne("FPTBOOK_STORE.Areas.Identity.Data.FPTBOOKUser", "FPTBOOKUser")
                         .WithMany("Orders")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FPTBOOKUserId");
 
-                    b.Navigation("User");
+                    b.Navigation("FPTBOOKUser");
                 });
 
             modelBuilder.Entity("FPTBOOK_STORE.Models.OrderDetail", b =>
@@ -527,6 +491,11 @@ namespace FPTBOOK_STORE.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("FPTBOOK_STORE.Areas.Identity.Data.FPTBOOKUser", b =>
+                {
+                    b.Navigation("Orders");
+                });
+
             modelBuilder.Entity("FPTBOOK_STORE.Models.Author", b =>
                 {
                     b.Navigation("Books");
@@ -550,11 +519,6 @@ namespace FPTBOOK_STORE.Migrations
             modelBuilder.Entity("FPTBOOK_STORE.Models.Publisher", b =>
                 {
                     b.Navigation("Books");
-                });
-
-            modelBuilder.Entity("FPTBOOK_STORE.Models.User", b =>
-                {
-                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }
