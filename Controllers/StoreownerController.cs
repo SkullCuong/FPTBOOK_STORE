@@ -9,8 +9,11 @@ using FPTBOOK_STORE.Models;
 using FPTBOOK_STORE.Areas.Identity.Data;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
+using Microsoft.AspNetCore.Authorization;
+
 namespace FPTBOOK_STORE.Controllers
 {
+    [Authorize(Roles = "StoreOwner")]
     public class StoreownerController : Controller
     {
         private readonly FPTBOOK_STOREIdentityDbContext _context;
