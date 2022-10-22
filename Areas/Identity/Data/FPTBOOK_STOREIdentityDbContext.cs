@@ -18,7 +18,7 @@ public class FPTBOOK_STOREIdentityDbContext : IdentityDbContext<FPTBOOKUser>
         modelBuilder.Entity<FPTBOOK_STORE.Models.Book>()
         .Property(p => p.Price).HasColumnType("decimal(18,4)");
         modelBuilder.Entity<FPTBOOK_STORE.Models.Category>()
-        .Property(p =>p.Status).HasDefaultValue(false);
+        .Property(p => p.Status).HasDefaultValue(false);
 
     }
 

@@ -7,6 +7,7 @@ builder.Services.AddDbContext<FPTBOOK_STOREIdentityDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("FPTBOOK_STOREIdentityDbContextConnection") ?? throw new InvalidOperationException("Connection string 'FPTBOOK_STOREIdentityDbContextConnection' not found.")));
 
 builder.Services.AddDefaultIdentity<FPTBOOKUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<FPTBOOK_STOREIdentityDbContext>();
 
 // Add services to the container.
@@ -21,6 +22,14 @@ builder.Services.AddSession(options =>
 });
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope()){
+    var services = scope.ServiceProvider;
+    var userManager = services.GetRequiredService<UserManager<FPTBOOKUser>>();
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+    await ContextSeed.SeedRolesAsync(userManager, roleManager);
+    await ContextSeed.SeedAdminAsync(userManager, roleManager);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

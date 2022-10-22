@@ -1,3 +1,8 @@
+@using Microsoft.AspNetCore.Identity
+@using FPTBOOK_STORE.Areas.Identity.Data
+@inject SignInManager<FPTBOOKUser> SignInManager
+@inject UserManager<FPTBOOKUser> UserManager
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,6 +57,11 @@
 							<i class="align-middle fa-solid fa-list" ></i> <span class="align-middle">Category</span>
 						</a>
 					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" asp-controller="rolemanager" asp-action="index">
+							<i class="align-middle fa-solid fa-list" ></i> <span class="align-middle">Role</span>
+						</a>
+					</li>
 				</ul>
 
 			</div>
@@ -63,7 +73,7 @@
 					<i class="hamburger align-self-center"></i>
 				</a>
 
-				<div class="navbar-collapse collapse">
+				@* <div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
 
 
@@ -93,7 +103,28 @@
 							</div>
 						</li>
 					</ul>
-				</div>
+				</div> *@
+				<div class ="header_login">
+                 <a href="Book/Checkout"class = "header_navitem" style ="text-decoration: none;"><i class="fa-solid fa-cart-shopping" style = "margin: 10px"></i> Your Cart</a>
+                 @if (SignInManager.IsSignedIn(User))
+                {   
+                    <div class ="header_navitem header_navitem_more">
+                        <p style = "display: block; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px;   margin-inline-end: 0px;">Hello @UserManager.GetUserName(User)!</p>
+                        <ul class ="header_navitem_sublist">
+                            <li> <a id="manage" class="header_navlink" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style ="text-decoration: none;">Profile</a></li>
+                            <li> <form id="logoutForm" class="header_navlink" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("", "", new { area = "" })">
+                                 <button id="logout" type="submit" class="header_navlink" style ="text-decoration: none; background-color: #272626; margin-right: 40px; color: white">Logout</button>
+                                 </form>
+                            </li>
+                        </ul>
+                    </div>       
+                }
+                else
+                {   
+                    <a class="header_navitem" id="login" asp-area="Identity" asp-page="/Account/Login" style ="text-decoration: none;">Login</a>
+                    <a class="header_navitem" id="register" asp-area="Identity" asp-page="/Account/Register" style ="text-decoration: none;">Register</a>
+                }       
+            </div>
 			</nav>
 			<main class="content">
 				@RenderBody()
