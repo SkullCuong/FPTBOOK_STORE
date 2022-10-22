@@ -1,5 +1,20 @@
-@* @model IEnumerable<FPTBOOK_STORE.Models.Order>
-
+@model IEnumerable<FPTBOOK_STORE.Models.Order>
+@{
+    String[] Status = new String[]{
+"warning",
+"info",
+"primary",
+"success",
+"danger",
+};
+     String[] Status_Name = new String[]{
+"In Process",
+"To Ship",
+"Delivery",
+"Completed",
+"Cancel",
+};
+}
 <title>Order List</title>
 <div class="row">
     <div class="col-12 col-lg-10 col-xxl-12 d-flex">
@@ -28,11 +43,11 @@
                     {   
 
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.User.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.FPTBOOKUser.Name)</td>
                             <td>
                                 @item.OrderDate.ToString("dd/MM/yyyy")
                             </td>
-                            <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                            <td><span class="badge bg-@Status[item.Status]">@Status_Name[item.Status]</span></td>
 
                             <td>
                                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success"
@@ -46,4 +61,4 @@
             </table>
         </div>
     </div>
-</div> *@
+</div>

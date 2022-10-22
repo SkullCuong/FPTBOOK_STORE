@@ -1,3 +1,8 @@
+@using Microsoft.AspNetCore.Identity
+@using FPTBOOK_STORE.Areas.Identity.Data
+@inject SignInManager<FPTBOOKUser> SignInManager
+@inject UserManager<FPTBOOKUser> UserManager
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +14,7 @@
 	<meta name="author" content="AdminKit">
 	<meta name="keywords"
 		content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
-	
+
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" type="image/x-icon" href="~/img/icons/Store.png" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
@@ -39,7 +44,8 @@
 					</li>
 					<li class="sidebar-item ">
 						<a class="sidebar-link" asp-controller="storeowner" asp-action="chart">
-							<i class="align-middle fa-solid fa-chart-simple"></i> <span class="align-middle">Dashboard</span>
+							<i class="align-middle fa-solid fa-chart-simple"></i> <span
+								class="align-middle">Dashboard</span>
 						</a>
 					</li>
 					<li class="sidebar-item">
@@ -65,9 +71,10 @@
 							<i class="align-middle fa-solid fa-book"></i> <span class="align-middle">Book</span>
 						</a>
 					</li>
-						<li class="sidebar-item">
+					<li class="sidebar-item">
 						<a class="sidebar-link" asp-controller="Order" asp-action="index">
-							<i class="align-middle fa-solid fa-cart-shopping"></i> <span class="align-middle">Order</span>
+							<i class="align-middle fa-solid fa-cart-shopping"></i> <span
+								class="align-middle">Order</span>
 						</a>
 					</li>
 				</ul>
@@ -93,21 +100,14 @@
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
 								data-bs-toggle="dropdown">
-								<img src="~\img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1"
-									alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
+								<span class="text-dark">@UserManager.GetUserName(User)</span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1"
-										data-feather="user"></i> Profile</a>
-								<a class="dropdown-item" href="#"><i class="align-middle me-1"
-										data-feather="pie-chart"></i> Analytics</a>
+
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="index.html"><i class="align-middle me-1"
-										data-feather="settings"></i> Settings & Privacy</a>
-								<a class="dropdown-item" href="#"><i class="align-middle me-1"
-										data-feather="help-circle"></i> Help Center</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Log out</a>
+								<form id="logoutForm" class="header_navlink" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("", "", new { area = "" })">
+                                 <button id="logout" type="submit" class="dropdown-item" >Logout</button>
+                                 </form>
 							</div>
 						</li>
 					</ul>
@@ -118,10 +118,11 @@
 			</main>
 			<footer class="footer">
 				<div class="container-fluid">
-					<div class="row text-muted" >
+					<div class="row text-muted">
 						<div class="col-12 text-start">
 							<p class="mb-0">
-								<a class="text-muted" asp-controller ="book" asp-action ="bookhome"><strong>F̵̜̜͎͉̯̜̓͂P̷̛̛̛̩̺͇̊̅̍͂͗͑͐̎̂̏̐̐T̷̡̧̬̲̭̦̘̩̊̉͛̓̓̌͌̕B̶̨̛̺̤̱̾̀́̋̔̆̏̎͘͘O̵̧̗͕̹̼̦̗̮̱̝͆͊́́̈̿̋ͅO̵̧̗͕̹̼̦̗̮̱̝͆͊́́̈̿̋ͅK̵̢̛̛͉̳̫͔̺̱̗̫̽̉́͋̾́͂͛</strong></a>
+								<a class="text-muted" asp-controller="book"
+									asp-action="bookhome"><strong>F̵̜̜͎͉̯̜̓͂P̷̛̛̛̩̺͇̊̅̍͂͗͑͐̎̂̏̐̐T̷̡̧̬̲̭̦̘̩̊̉͛̓̓̌͌̕B̶̨̛̺̤̱̾̀́̋̔̆̏̎͘͘O̵̧̗͕̹̼̦̗̮̱̝͆͊́́̈̿̋ͅO̵̧̗͕̹̼̦̗̮̱̝͆͊́́̈̿̋ͅK̵̢̛̛͉̳̫͔̺̱̗̫̽̉́͋̾́͂͛</strong></a>
 								&copy;
 							</p>
 						</div>
