@@ -1,4 +1,4 @@
-@model FPTBOOK_STORE.Models.BookCategoryViewModel
+
 @using Microsoft.AspNetCore.Identity
 @using FPTBOOK_STORE.Areas.Identity.Data
 @inject SignInManager<FPTBOOKUser> SignInManager
@@ -139,28 +139,16 @@
                     <h4>Best Seller</h4>
                     <ul class ="ul">
                         <li>
-                            <form asp-controller="Book" asp-action="BookHome" method="get">
-                            <input asp-for="BookCategory" asp-items="Model.Categories" type = "hidden">
-                            <a href="/?BookCategory=Fantasy&Search=">Fantasy</a>
-                        </form>
+                            <a href="#">Harry Porter</a>
                         </li>
                         <li>
-                            <form asp-controller="Book" asp-action="BookHome" method="get">
-                            <input asp-for="BookCategory" asp-items="Model.Categories" type = "hidden">
-                            <a href="/?BookCategory=Action&Search=">Action</a>
-                        </form>
+                            <a href="#">Oce Piece</a>
                         </li>
                         <li>
-                            <form asp-controller="Book" asp-action="BookHome" method="get">
-                            <input asp-for="BookCategory" asp-items="Model.Categories" type = "hidden">
-                            <a href="/?BookCategory=Comedy&Search=">Comedy</a>
-                        </form>
+                            <a href="#">Submerging</a>
                         </li>
                         <li>
-                            <form asp-controller="Book" asp-action="BookHome" method="get">
-                            <input asp-for="BookCategory" asp-items="Model.Categories" type = "hidden">
-                            <a href="/?BookCategory=Humor&Search=">Humor</a>
-                        </form>
+                            <a href="#">Calling</a>
                         </li>
                     </ul>
                 </div>
