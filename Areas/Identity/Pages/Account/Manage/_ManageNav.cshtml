@@ -1,6 +1,7 @@
 @using Microsoft.AspNetCore.Identity
 @using FPTBOOK_STORE.Areas.Identity.Data
 @inject SignInManager<FPTBOOKUser> SignInManager
+    
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }

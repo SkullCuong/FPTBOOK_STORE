@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Nmo2x45I7xbFfqjT8JIT4pMYociXqUBhuZNrGhKI3Rg=",
+  "Hash": "h8rywtPks0xZeCMXasKwxMSWvE0QHnGuOr1NDNSInRw=",
   "Source": "FPTBOOK_STORE",
   "BasePath": "_content/FPTBOOK_STORE",
   "Mode": "Default",
@@ -2769,6 +2769,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\github.png"
+    },
+    {
+      "Identity": "C:\\ASM2 Application\\Final\\FPTBOOK_STORE\\wwwroot\\uploads\\Harry Potter and the Chamber of Secrets.jpg",
+      "SourceId": "FPTBOOK_STORE",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ASM2 Application\\Final\\FPTBOOK_STORE\\wwwroot\\",
+      "BasePath": "_content/FPTBOOK_STORE",
+      "RelativePath": "uploads/Harry Potter and the Chamber of Secrets.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Harry Potter and the Chamber of Secrets.jpg"
     },
     {
       "Identity": "C:\\ASM2 Application\\Final\\FPTBOOK_STORE\\wwwroot\\uploads\\Harry Potter and the Deathly Hallows.jpg",
