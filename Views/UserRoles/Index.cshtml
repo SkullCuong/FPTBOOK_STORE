@@ -23,6 +23,7 @@
             <td>@string.Join(" , ", user.Roles.ToList())</td>
             <td>
                 <a class="btn btn-primary" asp-controller="UserRoles" asp-action="Manage" asp-route-userId="@user.UserId">Manage Roles</a>
+                <a class="btn btn-primary" href="/identity/account/resetpassword">Reset Password</a>
             </td>
         </tr>
         }

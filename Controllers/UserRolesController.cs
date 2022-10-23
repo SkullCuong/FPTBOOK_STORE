@@ -15,9 +15,10 @@ namespace FPTBOOK_STORE.Controllers
     public class UserRolesController : Controller
     {
         private readonly UserManager<FPTBOOKUser> _userManager;
+         private readonly IUserStore<FPTBOOKUser> _userStore;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UserRolesController(UserManager<FPTBOOKUser> userManager, RoleManager<IdentityRole> roleManager)
+        public UserRolesController(UserManager<FPTBOOKUser> userManager, RoleManager<IdentityRole> roleManager, IUserStore<FPTBOOKUser> userStore)
         {
             _roleManager = roleManager;
             _userManager = userManager;
@@ -94,5 +95,8 @@ namespace FPTBOOK_STORE.Controllers
             }
             return RedirectToAction("Index");
         }
+        
+      
+        
     }
 }
