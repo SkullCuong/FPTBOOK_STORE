@@ -41,11 +41,10 @@
             <div class ="header_navwarp">
                 <div class ="header_navbar>">
                     <a href="/" class = "header_navitem" style ="text-decoration: none;">Home</a>
-                    <a href="#" class = "header_navitem" style ="text-decoration: none;">Our Service</a>
+                    <a asp-controller = "Book" asp-action ="About" class = "header_navitem" style ="text-decoration: none;">About Us</a>
                     <div class ="header_navitem header_navitem_more">
                         <p style = "display: block; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px;   margin-inline-end: 0px;">More</p>
                         <ul class ="header_navitem_sublist" >
-                            <li> <a asp-controller = "Book" asp-action ="About" class = "header_navlink" style ="text-decoration: none;">About Us</a> </li>
                             <li> <a asp-controller = "Book" asp-action ="ContactUs" class = "header_navlink" style ="text-decoration: none;">Contact Us</a> </li>
                             <li> <a asp-controller = "Book" asp-action ="Support" class = "header_navlink" style ="text-decoration: none;">Support</a> </li>
                         </ul>
