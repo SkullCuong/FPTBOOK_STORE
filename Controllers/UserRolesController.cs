@@ -7,9 +7,11 @@ using FPTBOOK_STORE.Areas.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FPTBOOK_STORE.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FPTBOOK_STORE.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UserRolesController : Controller
     {
         private readonly UserManager<FPTBOOKUser> _userManager;

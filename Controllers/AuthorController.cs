@@ -7,8 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FPTBOOK_STORE.Models;
 using FPTBOOK_STORE.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
+
 namespace FPTBOOK_STORE.Controllers
 {
+    [Authorize(Roles = "StoreOwner")]
     public class AuthorController : Controller
     {
         private readonly FPTBOOK_STOREIdentityDbContext _context;
