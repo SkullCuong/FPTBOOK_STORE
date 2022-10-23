@@ -15,6 +15,7 @@ namespace FPTBOOK_STORE.Controllers
     public class OrderController : Controller
     {
         private string Layout = "StoreownerLayout";
+        private string MainLayout = "_MainLayout";
         private readonly UserManager<FPTBOOKUser> _userManager;
         private readonly FPTBOOK_STOREIdentityDbContext _context;
         private readonly IWebHostEnvironment hostEnvironment;
@@ -28,6 +29,15 @@ namespace FPTBOOK_STORE.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.Layout = Layout;
+            var FPTBOOK_STOREIdentityDbContext = _context.Order.Include(m => m.FPTBOOKUser);
+            return View(await FPTBOOK_STOREIdentityDbContext.ToListAsync());
+        }
+        public async Task<IActionResult> Index1()
+        {
+            ViewBag.Layout = MainLayout;
+            var userID = _userManager.GetUserId(HttpContext.User);
+            FPTBOOKUser user = _userManager.FindByIdAsync(userID).Result;
+            ViewBag.id = user.Id;
             var FPTBOOK_STOREIdentityDbContext = _context.Order.Include(m => m.FPTBOOKUser);
             return View(await FPTBOOK_STOREIdentityDbContext.ToListAsync());
         }
@@ -113,6 +123,41 @@ namespace FPTBOOK_STORE.Controllers
         {
             return (_context.Order?.Any(e => e.Id == id)).GetValueOrDefault();
 
+        }
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null || _context.Order == null)
+            {
+                return NotFound();
+            }
+
+            var orderDetail = await _context.Order
+                .Include(o => o.FPTBOOKUser)
+                .Include(o => o.OrderDetails)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (orderDetail == null)
+            {
+                return NotFound();
+            }
+
+            return View(orderDetail);
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            if (_context.Order == null)
+            {
+                return Problem("Entity set 'FPTBOOK_STOREIdentityDbContext.OrderDetail'  is null.");
+            }
+            var order = await _context.Order.FindAsync(id);
+            if (order != null)
+            {
+                _context.Order.Remove(order);
+            }
+            
+            await _context.SaveChangesAsync();
+            return RedirectToAction("BookHome","Book");
         }
     }
 }

@@ -60,6 +60,7 @@
                         @if (this.User.IsInRole("Admin") && !this.User.IsInRole("StoreOwner")){
                         <ul class ="header_navitem_sublist">
                             <li> <a id="manage" class="header_navlink" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style ="text-decoration: none;">Profile</a></li>
+                            <li> <a id="" class="header_navlink" asp-controller = "Order" asp-action ="Index1"  style ="text-decoration: none;">Order</a></li>
                             <li> <a id="" class="header_navlink" asp-controller = "Admin" asp-action ="Index"  style ="text-decoration: none;">Admin Page</a></li>
                             <li> <form id="logoutForm" class="header_navlink" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("", "", new { area = "" })">
                                  <button id="logout" type="submit" class="header_navlink" style ="text-decoration: none; background-color: #272626; margin-right: 40px; color: white">Logout</button>
@@ -69,6 +70,7 @@
                         }else if (this.User.IsInRole("StoreOwner") && !this.User.IsInRole("Admin")){
                         <ul class ="header_navitem_sublist">
                             <li> <a id="manage" class="header_navlink" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style ="text-decoration: none;">Profile</a></li>
+                            <li> <a id="" class="header_navlink" asp-controller = "Order" asp-action ="Index1"  style ="text-decoration: none;">Order</a></li>
                             <li> <a id="" class="header_navlink" asp-controller = "StoreOwner" asp-action ="Index"  style ="text-decoration: none;">StoreOwner</a></li>
                             <li> <form id="logoutForm" class="header_navlink" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("", "", new { area = "" })">
                                  <button id="logout" type="submit" class="header_navlink" style ="text-decoration: none; background-color: #272626; margin-right: 40px; color: white">Logout</button>
@@ -78,6 +80,7 @@
                         }else if (this.User.IsInRole("StoreOwner") && this.User.IsInRole("Admin") && this.User.IsInRole("Customer")){
                             <ul class ="header_navitem_sublist">
                             <li> <a id="manage" class="header_navlink" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style ="text-decoration: none;">Profile</a></li>
+                            <li> <a id="" class="header_navlink" asp-controller = "Order" asp-action ="Index1"  style ="text-decoration: none;">Order</a></li>
                             <li> <a id="" class="header_navlink" asp-controller = "Admin" asp-action ="Index"  style ="text-decoration: none;">Admin Page</a></li>
                             <li> <a id="" class="header_navlink" asp-controller = "StoreOwner" asp-action ="Index"  style ="text-decoration: none;">StoreOwner</a></li>
                             <li> <form id="logoutForm" class="header_navlink" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("", "", new { area = "" })">
@@ -88,6 +91,7 @@
                         }else if (this.User.IsInRole("StoreOwner") && this.User.IsInRole("Admin")){
                             <ul class ="header_navitem_sublist">
                             <li> <a id="manage" class="header_navlink" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style ="text-decoration: none;">Profile</a></li>
+                            <li> <a id="" class="header_navlink" asp-controller = "Order" asp-action ="Index1"  style ="text-decoration: none;">Order</a></li>
                             <li> <a id="" class="header_navlink" asp-controller = "Admin" asp-action ="Index"  style ="text-decoration: none;">Admin Page</a></li>
                             <li> <a id="" class="header_navlink" asp-controller = "StoreOwner" asp-action ="Index"  style ="text-decoration: none;">StoreOwner</a></li>
                             <li> <form id="logoutForm" class="header_navlink" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("", "", new { area = "" })">
@@ -99,6 +103,7 @@
                         else{
                         <ul class ="header_navitem_sublist">
                             <li> <a id="manage" class="header_navlink" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style ="text-decoration: none;">Profile</a></li>
+                            <li> <a id="" class="header_navlink" asp-controller = "Order" asp-action ="Index1"  style ="text-decoration: none;">Order</a></li>
                             <li> <form id="logoutForm" class="header_navlink" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("", "", new { area = "" })">
                                  <button id="logout" type="submit" class="header_navlink" style ="text-decoration: none; background-color: #272626; margin-right: 40px; color: white">Logout</button>
                                  </form>

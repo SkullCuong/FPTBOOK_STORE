@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FPTBOOK_STORE.Migrations
 {
     [DbContext(typeof(FPTBOOK_STOREIdentityDbContext))]
-    [Migration("20221023063131_InitialCreate")]
+    [Migration("20221023174152_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

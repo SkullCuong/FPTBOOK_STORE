@@ -12,6 +12,7 @@ namespace FPTBOOK_STORE.Controllers
     public class OrderDetailController : Controller
     {   
         private string Layout ="StoreownerLayout"; 
+        private string MainLayout ="_MainLayout"; 
         private readonly FPTBOOK_STOREIdentityDbContext _context;
 
         public OrderDetailController(FPTBOOK_STOREIdentityDbContext context)
@@ -23,6 +24,13 @@ namespace FPTBOOK_STORE.Controllers
         public async Task<IActionResult> Index(int id)
         {
             ViewBag.Layout = Layout;
+            var FPTBOOK_STOREIdentityDbContext = _context.OrderDetail.Include(o => o.Book).Include(o => o.Order);
+            ViewBag.id = id;
+            return View(await FPTBOOK_STOREIdentityDbContext.ToListAsync());
+        }
+        public async Task<IActionResult> Index1(int id)
+        {
+            ViewBag.Layout = MainLayout;
             var FPTBOOK_STOREIdentityDbContext = _context.OrderDetail.Include(o => o.Book).Include(o => o.Order);
             ViewBag.id = id;
             return View(await FPTBOOK_STOREIdentityDbContext.ToListAsync());
