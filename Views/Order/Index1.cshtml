@@ -52,7 +52,7 @@
                             <td>
                                 @if(@Status_Name[item.Status] == "In Process"){
                                     <a asp-controller="OrderDetail" asp-action="index1" asp-route-id="@item.Id" class="btn btn-primary" style="font-size:7px"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
-                                    <a asp-controller="Order" asp-action="delete" asp-route-id="@item.Id" class="btn btn-primary" style="font-size:7px"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+                                    <a asp-controller="Order" asp-action="delete" asp-route-id="@item.Id" class="btn btn-primary" style="font-size:7px"><i class="fa-sharp fa-solid fa-trash"></i></a>
                                 }else{
                                     <a asp-controller="OrderDetail" asp-action="index1" asp-route-id="@item.Id" class="btn btn-primary" style="font-size:7px"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
                                     <button asp-controller="Order" asp-action="delete" asp-route-id="@item.Id" class="btn btn-danger" disabled><i class="fa-sharp fa-solid fa-trash"></i></button>
