@@ -9,6 +9,7 @@ using FPTBOOK_STORE.Models;
 using Microsoft.Extensions.Caching.Memory;
 using FPTBOOK_STORE.Utils;
 using FPTBOOK_STORE.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 namespace FPTBOOK_STORE.Controllers
 {
     public class BookController : Controller
@@ -26,6 +27,7 @@ namespace FPTBOOK_STORE.Controllers
 
 
         // GET: Book
+        [Authorize(Roles = "StoreOwner")]
         public async Task<IActionResult> Index()
         {
             ViewBag.Layout = Layout;
@@ -55,6 +57,7 @@ namespace FPTBOOK_STORE.Controllers
         }
 
         // GET: Book/Create
+        [Authorize(Roles = "StoreOwner")]
         public IActionResult Create()
         {
             ViewBag.Layout = Layout;
@@ -70,6 +73,7 @@ namespace FPTBOOK_STORE.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "StoreOwner")]
         public async Task<IActionResult> Create([Bind("Id,Name,Price,UploadImage,AuthorID,CategoryID,PublisherID,Description")] Book book, IFormFile myfile)
         {
             ViewBag.Layout = Layout;
@@ -102,6 +106,7 @@ namespace FPTBOOK_STORE.Controllers
         }
 
         // GET: Book/Edit/5
+        [Authorize(Roles = "StoreOwner")]
         public async Task<IActionResult> Edit(int? id)
         {
             ViewBag.Layout = Layout;
@@ -129,6 +134,7 @@ namespace FPTBOOK_STORE.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "StoreOwner")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,UploadImage,AuthorID,CategoryID,PublisherID,Description")] Book book)
         {
             ViewBag.Layout = Layout;
@@ -166,6 +172,7 @@ namespace FPTBOOK_STORE.Controllers
         }
 
         // GET: Book/Delete/5
+        [Authorize(Roles = "StoreOwner")]
         public async Task<IActionResult> Delete(int? id)
         {
             Console.WriteLine(id);

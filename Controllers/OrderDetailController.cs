@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FPTBOOK_STORE.Models;
 using FPTBOOK_STORE.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 namespace FPTBOOK_STORE.Controllers
 {
     public class OrderDetailController : Controller
@@ -21,6 +22,7 @@ namespace FPTBOOK_STORE.Controllers
         }
 
         // GET: OrderDetail
+        [Authorize(Roles = "StoreOwner")]
         public async Task<IActionResult> Index(int id)
         {
             ViewBag.Layout = Layout;
@@ -37,6 +39,7 @@ namespace FPTBOOK_STORE.Controllers
         }
 
         // GET: OrderDetail/Details/5
+        [Authorize(Roles = "StoreOwner")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.OrderDetail == null)
@@ -57,6 +60,7 @@ namespace FPTBOOK_STORE.Controllers
         }
 
         // GET: OrderDetail/Create
+        [Authorize(Roles = "StoreOwner")]
         public IActionResult Create()
         {
             ViewData["BookID"] = new SelectList(_context.Book, "Id", "Id");
@@ -83,6 +87,7 @@ namespace FPTBOOK_STORE.Controllers
         }
 
         // GET: OrderDetail/Edit/5
+        [Authorize(Roles = "StoreOwner")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.OrderDetail == null)
@@ -138,6 +143,7 @@ namespace FPTBOOK_STORE.Controllers
         }
 
         // GET: OrderDetail/Delete/5
+        [Authorize(Roles = "StoreOwner")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.OrderDetail == null)

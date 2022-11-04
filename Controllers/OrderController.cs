@@ -9,7 +9,7 @@ using FPTBOOK_STORE.Models;
 using FPTBOOK_STORE.Utils;
 using FPTBOOK_STORE.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
-
+using Microsoft.AspNetCore.Authorization;
 namespace FPTBOOK_STORE.Controllers
 {
     public class OrderController : Controller
@@ -26,6 +26,7 @@ namespace FPTBOOK_STORE.Controllers
             _userManager = userManager;
             hostEnvironment = environment;
         }
+        [Authorize(Roles = "StoreOwner")]
         public async Task<IActionResult> Index()
         {
             ViewBag.Layout = Layout;
@@ -72,6 +73,7 @@ namespace FPTBOOK_STORE.Controllers
             HttpContext.Session.SetObject("cart", cart);
             return RedirectToAction("BookHome", "Book");
         }
+        [Authorize(Roles = "StoreOwner")]
         public async Task<IActionResult> Edit(int? id)
         {
             ViewBag.Layout = Layout;
@@ -89,6 +91,7 @@ namespace FPTBOOK_STORE.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "StoreOwner")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,OrderDate,Status,FPTBOOKUserId")] Order order)
         {
             
